@@ -9,51 +9,32 @@
     android:gravity="center">
 
     <EditText
-        android:id="@+id/first_edit_text"
+        android:id="@+id/enter_text_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите первое значение"
-        android:inputType="numberDecimal"/>
-
-
-    <EditText
-        android:id="@+id/second_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите второе значение"
-        android:inputType="number"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/plus_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"/>
-
-        <Button
-            android:id="@+id/minus_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"/>
-
-    </LinearLayout>
+        android:hint="Введите первое значение"/>
 
     <Button
-        android:id="@+id/count_button"
+        android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Посчитать"/>
+        android:text="Добавить"/>
+
+    <EditText
+        android:id="@+id/enter_text_delete_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите текст который нужно удалить"/>
+
+    <Button
+        android:id="@+id/remove_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Удалить"/>
 
     <TextView
-        android:id="@+id/result_text_view"
+        android:id="@+id/all_elements_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
