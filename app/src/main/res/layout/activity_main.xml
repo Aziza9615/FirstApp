@@ -24,7 +24,7 @@
         android:id="@+id/enter_text_delete_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите текст который нужно удалить"/>
+        android:hint="Введите значение которую хотите удалить"/>
 
     <Button
         android:id="@+id/remove_button"
