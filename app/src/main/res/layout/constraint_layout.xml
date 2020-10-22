@@ -4,28 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@mipmap/peterburg"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"/>
+
     <TextView
         android:id="@+id/username_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/colorPrimary"
         android:text="Имя пользователя"
         android:padding="8dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/username_value_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/username_text_view"
-        app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/colorPrimary"
         android:text="Азиза"
         android:padding="8dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/lastname_text_view"
@@ -113,7 +126,7 @@
         android:id="@+id/city_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Введите название вашего города"
+        android:hint="Введите город"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/city_text_view"
         app:layout_constraintBottom_toBottomOf="@+id/city_text_view"
@@ -137,7 +150,7 @@
         android:id="@+id/region_edit_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Введите название вашей области"
+        android:hint="Введите область"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/region_text_view"
         app:layout_constraintBottom_toBottomOf="@+id/region_text_view"
