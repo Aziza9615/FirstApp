@@ -1,58 +1,42 @@
 package com.example.firstapp
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.constraint_layout.*
-import kotlin.math.log
+import kotlinx.android.synthetic.main.constrant_layout.*
 
 class MainActivity : AppCompatActivity() {
 
-    var name = "Aziza"
-    var lastname = "Sadykova"
-    var age = 24
+    val imageArray: MutableList<Int> = mutableListOf<Int>()
 
-    var textArray: MutableList<String> = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.constraint_layout)
-        setViews()
-        saveAction()
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
-    private fun checkFields(value: String, message: String) {
-        if (value.isEmpty()) {
-            showToast(message)
-            return
-        }
-    }
-
-    private fun setViews() {
-        username_value_text_view.text = name
-        lastname_value_text_view.text = lastname
-        age_value_text_view.text = age.toString()
+        setContentView(R.layout.constrant_layout)
+        changeIconAction()
 
     }
 
-    private fun saveAction() {
-        save_button.setOnClickListener {
-            val phone: String = phone_edit_text.text.toString()
-            val city: String = city_edit_text.text.toString()
-            val region: String = region_edit_text.text.toString()
+    private fun changeIconAction() {
+        change_image.setOnClickListener {
+            val imageArray =
+                arrayOf(R.mipmap.djakarta,R.mipmap.kaliforniya,R.mipmap.chehiya, R.mipmap.horvatiya, R.mipmap.italy, R.mipmap.spain, R.mipmap.peterburg, R.mipmap.tokyo, R.mipmap.turciya)
 
-
-            checkFields(phone, "Поле номер телефона не может быть пустым")
-            checkFields(city, "Поле города не может не быть пустым")
-            checkFields(region, "Поле области не может быть пустым")
-
-
-            Log.v("SAVE_LOG,", "$name, $lastname, $age")
+            val imageRandom = imageArray.random()
+            image_view.setImageResource(imageRandom)
         }
     }
 }
+
+//            val number: Int = (0..1000).random()
+//            showToast("Рандомное число равно = $number")
+//        }
+//
+//    }
+//
+//    private fun showToast(message: String) {
+//        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+//    }
+//
+//}
+
 
