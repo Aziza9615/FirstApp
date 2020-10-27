@@ -1,75 +1,44 @@
 package com.example.firstapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.constrant_layout.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var count = 0
-    var age = 0
-    var weight = 0
-    var size = 0
+    private val array: MutableList<String> = mutableListOf<String>()
+    val list: List<String> = listOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.constrant_layout)
-        Log.v("ACTIVITY_STATE", "onCreate")
+        setContentView(R.layout.activity_main)
+        nextActivityAction()
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.v("ACTIVITY_STATE", "onStart")
+    private fun nextActivityAction() {
+        go_to_next.setOnClickListener {
+            val intent = Intent(this, secondAcivity::class.java)
+            val valueFromEditText: String = input.text.toString()
+            intent.putExtra("value", valueFromEditText)
+            array.add(valueFromEditText)
+            startActivityForResult(intent,1)
+        }
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        count = savedInstanceState.getInt("count")
-        age = savedInstanceState.getInt("age")
-        weight = savedInstanceState.getInt("weight")
-        size = savedInstanceState.getInt("size")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data == null) return
+        val modifyData: String? = data.getStringExtra("modify_value")
+        input.setText(modifyData)
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.v("ACTIVITY_STATE", "onResume")
-        count++
-        Log.v("ACTIVITY_STATE", "$count")
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
-    override fun onPause() {
-        super.onPause()
-        Log.v("ACTIVITY_STATE", "onPause")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.v("ACTIVITY_STATE", "onSaveInstanceState")
-        outState.putInt("count", count)
-        outState.putInt("age", age)
-        outState.putInt("weight", weight)
-        outState.putInt("size", size)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.v("ACTIVITY_STATE", "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.v("ACTIVITY_STATE", "onDestroy")
-    }
-
-
-    //private fun showToast(message: String) {
-        //Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    //}
-
 }
+
 
 
 

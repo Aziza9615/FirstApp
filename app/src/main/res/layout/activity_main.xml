@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,32 +8,21 @@
     android:gravity="center">
 
     <EditText
-        android:id="@+id/enter_text_edit_text"
+        android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите первое значение"/>
+        android:text="Введите значение"/>
 
     <Button
-        android:id="@+id/add_button"
+        android:id="@+id/go_to_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Добавить"/>
-
-    <EditText
-        android:id="@+id/enter_text_delete_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введите значение которую хотите удалить"/>
+        android:text="Перейти на 2-й активити"/>
 
     <Button
-        android:id="@+id/remove_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/display_all_values"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="Удалить"/>
-
-    <TextView
-        android:id="@+id/all_elements_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="Отобразить массив"/>
 
 </LinearLayout>
