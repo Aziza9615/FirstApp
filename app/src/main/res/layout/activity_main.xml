@@ -30,15 +30,15 @@
             android:orientation="horizontal"
             android:padding="4dp">
 
-            <Button
-                android:id="@+id/btn_open_parent"
+            <ImageButton
+                android:id="@+id/btn_remove"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
-                android:text="("
-                android:textColor="@color/white_bgr"
-                android:textSize="24dp" />
+                android:background="@color/white_bgr"
+                android:src="@drawable/ic_baseline_trending_flat_24"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/btn_close_parent"
@@ -110,7 +110,7 @@
                 android:textSize="24dp" />
 
             <Button
-                android:id="@+id/btn_multiply"
+                android:id="@+id/btn_pow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
