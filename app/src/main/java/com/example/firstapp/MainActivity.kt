@@ -1,6 +1,7 @@
 package com.example.firstapp
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,12 +13,16 @@ class MainActivity : AppCompatActivity() {
     private var operand = ""
     private var default = ""
     private var lastNumber = ""
+    private val desimalArrayButtons = mutableListOf(btn_0, btn_1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btn0()
-        btn1()
+        desimalArrayButtons.apply {
+            btn0()
+            btn1()
+        }
+        setAllButton()
         btn2()
         btn3()
         btn4()
@@ -35,6 +40,17 @@ class MainActivity : AppCompatActivity() {
         btnClear()
         btnEguals()
         btnRemoveLast()
+    }
+
+    private  fun setAllButton() {
+        for (btn in desimalArrayButtons) {
+            btn.setOnClickListener {
+                default = result.text.toString()
+                default += btn.text
+                lastNumber += btn.text
+                result.text = default
+            }
+        }
     }
 
     private fun btn0() {
@@ -129,6 +145,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun btnClear() {
         btn_delete.setOnClickListener {
+            enteredNumber = 0
+            lastNumber = ""
             result.text = ""
         }
     }
@@ -143,76 +161,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun btnPow() {
         btn_pow.setOnClickListener {
-            default = result.text.toString()
-            if (isDesimal(default.last())) {
-
-                if (enteredNumber == 0) enteredNumber += lastNumber.toInt()
-                else enteredNumber *= lastNumber.toInt()
-                lastNumber = ""
-                default += "*"
-                result.text = default
-        } else {
-            default = default.dropLast(1)
-            default += "*"
-            result.text = default
-        }
-            operand = "*"
+            operandWorker("*")
     }
 }
 
     private fun btnMinus() {
         btn_minus.setOnClickListener {
-            default = result.text.toString()
-            if (isDesimal(default.last())) {
-                if (enteredNumber == 0)enteredNumber += lastNumber.toInt()
-                else enteredNumber -= lastNumber.toInt()
-                lastNumber = ""
-                default += "-"
-                result.text = default
-            } else {
-                default = default.dropLast(1)
-                default += "-"
-                result.text = default
-            }
-            operand = "-"
+            operandWorker("-")
         }
     }
 
     private fun btnPlus() {
         btn_plus.setOnClickListener {
-            default = result.text.toString()
-            if (isDesimal(default.last())) {
-                if (enteredNumber == 0)enteredNumber += lastNumber.toInt()
-                else enteredNumber += lastNumber.toInt()
-                lastNumber = ""
-                default += "+"
-                result.text = default
-            } else {
-                default = default.dropLast(1)
-                default += "+"
-                result.text = default
-            }
-            operand = "+"
+            operandWorker("+")
         }
     }
 
     private fun btnDivision() {
         btn_division.setOnClickListener {
-            default = result.text.toString()
-            if (isDesimal(default.last())) {
-                if (enteredNumber == 0)enteredNumber += lastNumber.toInt()
-                else enteredNumber /= lastNumber.toInt()
-                lastNumber = ""
-                default += "/"
-                result.text = default
-            } else {
-                default = default.dropLast(1)
-                default += "/"
-                result.text = default
-            }
-            operand = "/"
+            operandWorker("+")
         }
     }
+
+    private fun operandWorker(type: String) {
+        default = result.text.toString()
+        if (isDesimal(default.last())) {
+            if (enteredNumber == 0) enteredNumber += lastNumber.toInt()
+            lastNumber = ""
+        } else {
+            default = type.dropLast(1)
+        }
+            default += "type"
+            result.text = default
+            operand = type
+        }
 
     private fun btnRemoveLast() {
         btn_remove.setOnClickListener {
@@ -225,22 +207,12 @@ class MainActivity : AppCompatActivity() {
 
         private fun btnEguals() {
             btn_eguals.setOnClickListener {
-                if (operand == "*") {
-                    val sum = enteredNumber * lastNumber.toInt()
-                    result.text = sum.toString()
-                } else if (operand == "/") {
-                    val sum = enteredNumber / lastNumber.toInt()
-                    result.text = sum.toString()
-                } else if (operand == "+") {
-                    val sum = enteredNumber + lastNumber.toInt()
-                    result.text = sum.toString()
-                } else if (operand == "-") {
-                    val sum = enteredNumber - lastNumber.toInt()
-                    result.text = sum.toString()
-                } else if (operand == "%") {
-                    val sum = enteredNumber % lastNumber.toInt()
-                    result.text = sum.toString()
-                }
+                if (operand == "*") enteredNumber *= lastNumber.toInt()
+                else if (operand == "/") enteredNumber /= lastNumber.toInt()
+                else if (operand == "+") enteredNumber += lastNumber.toInt()
+                else if (operand == "-") enteredNumber -= lastNumber.toInt()
+                result.text = enteredNumber.toString()
+                lastNumber = ""
             }
         }
 
