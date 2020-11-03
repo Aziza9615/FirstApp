@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/colorAccent"
                 android:text=")"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/colorAccent"
                 android:text="%"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/gray_bgr"
                 android:text="АС"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/colorPrimaryDark"
                 android:text="*"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/colorPrimary"
                 android:text="-"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -212,7 +212,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/black_bgr"
+                android:background="@color/colorPrimaryDark"
                 android:text="+"
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
@@ -247,12 +247,12 @@
                 android:textSize="24dp" />
 
             <Button
-                android:id="@+id/btn_zapata"
+                android:id="@+id/btn_dot"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/black_bgr"
-                android:text=","
+                android:text="."
                 android:textColor="@color/white_bgr"
                 android:textSize="24dp" />
 
