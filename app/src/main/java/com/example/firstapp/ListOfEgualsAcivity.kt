@@ -8,29 +8,23 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_second_acivity.*
 
-class secondAcivity : AppCompatActivity() {
+class ListOfEgualsAcivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_acivity)
 
-        getIntentFromPreviusActivity()
-        getToMainAction()
+        getListOfEguals()
     }
 
-    private fun getIntentFromPreviusActivity() {
-        val valueFromFirstActivity: String? = intent.getStringExtra("value")
-        output.setText(valueFromFirstActivity)
-    }
-
-    private fun getToMainAction() {
-        go_to_main.setOnClickListener {
-            val intent = Intent()
-            val output: String = output.text.toString()
-            intent.putExtra("modify_value", output)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+    private fun getListOfEguals() {
+        val value = intent.getStringArrayListExtra("list")
+        var result:String = ""
+        if (value != null)
+        for (i in value) {
+            result += "$value \n"
         }
+        list_txt.text = result
     }
 
     private fun showToast(message: String?) {

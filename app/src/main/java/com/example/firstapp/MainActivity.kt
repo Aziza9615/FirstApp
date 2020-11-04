@@ -1,5 +1,6 @@
 package com.example.firstapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.constrant_layout.*
+import java.util.ArrayList
 import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
@@ -17,21 +19,30 @@ class MainActivity : AppCompatActivity() {
     private var lastNumber = ""
     private val desimalArrayButtons = mutableListOf<Button>()
     private val operandArrayButtons = mutableListOf<Button>()
+    private val egualsArray = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "calculator"
         setDesimalButtonsToArray()
         setDesimalButton()
 
         setOperandButtonsToArray()
         setOperandAllButton()
 
-        btnDot()
         btnClear()
         btnEguals()
         btnRemoveLast()
-        displayResult()
+        btnOpenList ()
+    }
+
+    private fun btnOpenList() {
+        send_egual_btn.setOnClickListener {
+            val intent = Intent(this, ListOfEgualsAcivity::class.java)
+            intent.putStringArrayListExtra("lais", egualsArray as ArrayList<String>)
+            startActivity(intent)
+        }
     }
 
     private fun setDesimalButtonsToArray() {
@@ -140,6 +151,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     private fun displayResult() {
+        egualsArray.add(enteredNumber.toString())
         if (enteredNumber % 1 == 0.0) result.text = enteredNumber.roundToInt().toString()
         else result.text = String.format("%.2f", enteredNumber)
         lastNumber = ""
