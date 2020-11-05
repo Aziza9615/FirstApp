@@ -2,6 +2,7 @@ package com.example.firstapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private var lastNumber = ""
     private val desimalArrayButtons = mutableListOf<Button>()
     private val operandArrayButtons = mutableListOf<Button>()
-    private val egualsArray = mutableListOf<String>()
+    private var egualsArray = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,29 @@ class MainActivity : AppCompatActivity() {
         btnRemoveLast()
         btnOpenList ()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putDouble("enteredNumber", enteredNumber)
+        outState.putString("operand", operand)
+        outState.putString("operand", operand)
+        outState.putString("default", default)
+        outState.putString("lastNumber", lastNumber)
+        outState.putString("textViewData", result.text.toString())
+        outState.putStringArrayList("egualArray", egualsArray as ArrayList)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        enteredNumber = savedInstanceState.getDouble("enteredNumber")
+        operand = savedInstanceState.getString("enteredNumber").toString()
+        default = savedInstanceState.getString("default").toString()
+        lastNumber = savedInstanceState.getString("lastNumber").toString()
+        result.text = savedInstanceState.getString("textViewData")
+       // egualsArray = savedInstanceState.getStringArrayList("egualArray") as MutableList<String>
+        }
+
+
 
     private fun btnOpenList() {
         send_egual_btn.setOnClickListener {
@@ -152,8 +176,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayResult() {
         egualsArray.add(enteredNumber.toString())
-        if (enteredNumber % 1 == 0.0) result.text = enteredNumber.roundToInt().toString()
-        else result.text = String.format("%.2f", enteredNumber)
+        val summary = if (enteredNumber % 1 == 0.0) enteredNumber.roundToInt().toString()
+        else String.format("%.2f", enteredNumber)
+        result.text = summary
         lastNumber = ""
     }
 

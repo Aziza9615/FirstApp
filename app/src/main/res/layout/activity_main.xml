@@ -10,8 +10,8 @@
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@color/black_bgr"
-        android:textColor="@color/gray_bgr"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/black_bgr"
         android:textSize="56sp"
         tools:text="10000"
         android:gravity="bottom|right" />
@@ -20,7 +20,7 @@
         android:id="@+id/too"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_bgr"
+        android:background="@color/colorAccent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -174,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textColor="@color/white_bgr"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/black_bgr"
             android:text="ПЕРЕЙТИ"
             android:layout_margin="8dp"/>
 

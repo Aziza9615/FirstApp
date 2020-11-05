@@ -22,7 +22,7 @@ class ListOfEgualsAcivity : AppCompatActivity() {
         var result:String = ""
         if (value != null)
         for (i in value) {
-            result += "$value \n"
+            result += "$i \n"
         }
         list_txt.text = result
     }
