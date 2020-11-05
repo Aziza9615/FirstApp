@@ -6,178 +6,31 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите ваше значение"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/set_shared_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить"
+        android:layout_marginTop="32dp"/>
+
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/from_shared_text_view"
+        android:text="Значение из SHAREDPREFERENCE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"/>
+
+    <Button
+        android:id="@+id/get_shared_btn"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/black_bgr"
-        android:textSize="56sp"
-        tools:text="10000"
-        android:gravity="bottom|right" />
-
-    <LinearLayout
-        android:id="@+id/too"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
-            <ImageButton
-                android:id="@+id/btn_remove"
-                android:src="@drawable/ic_baseline_trending_flat_24"
-                android:textSize="24sp"
-                style="@style/button"/>
-
-            <Button
-                android:text=")"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_percent"
-                android:text="%"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_delete"
-                android:text="АС"
-                style="@style/button"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
-            <Button
-                android:id="@+id/btn_7"
-                android:text="7"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_8"
-                android:text="8"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_9"
-                android:text="9"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_pow"
-                android:text="*"
-                style="@style/button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
-            <Button
-                android:id="@+id/btn_4"
-                android:text="4"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_5"
-                android:text="5"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_6"
-                android:text="6"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_minus"
-                android:text="-"
-                style="@style/button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
-            <Button
-                android:id="@+id/btn_1"
-                android:text="1"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_2"
-                android:text="2"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_3"
-                android:text="3"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_plus"
-                android:text="+"
-                style="@style/button" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
-            <Button
-                android:id="@+id/btn_division"
-                android:text="/"
-                style="@style/button" />
-
-            <Button
-                android:id="@+id/btn_0"
-                android:text="0"
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_dot"
-                android:text="."
-                style="@style/button"/>
-
-            <Button
-                android:id="@+id/btn_eguals"
-                android:text="="
-                style="@style/button"
-                android:background="@drawable/btn_circle"/>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/send_egual_btn"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textColor="@color/white_bgr"
-            android:background="@color/black_bgr"
-            android:text="ПЕРЕЙТИ"
-            android:layout_margin="8dp"/>
-
-    </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:text="Получить из ShardPreference"
+        android:layout_marginTop="32dp"/>
 </LinearLayout>

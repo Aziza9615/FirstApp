@@ -1,192 +1,37 @@
 package com.example.firstapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.constrant_layout.*
-import java.util.ArrayList
-import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
-
-    private var enteredNumber: Double = 0.0
-    private var operand = ""
-    private var default = ""
-    private var lastNumber = ""
-    private val desimalArrayButtons = mutableListOf<Button>()
-    private val operandArrayButtons = mutableListOf<Button>()
-    private var egualsArray = mutableListOf<String>()
-
+    private lateinit var shared: SharedPreferences
+   // private val shared = SharedPreferences(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        shared = SharedPreferences(this)
         setContentView(R.layout.activity_main)
-        title = "calculator"
-        setDesimalButtonsToArray()
-        setDesimalButton()
-
-        setOperandButtonsToArray()
-        setOperandAllButton()
-
-        btnClear()
-        btnEguals()
-        btnRemoveLast()
-        btnOpenList ()
+        setSharedDataAction()
+        getSharedDataAction()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putDouble("enteredNumber", enteredNumber)
-        outState.putString("operand", operand)
-        outState.putString("operand", operand)
-        outState.putString("default", default)
-        outState.putString("lastNumber", lastNumber)
-        outState.putString("textViewData", result.text.toString())
-        outState.putStringArrayList("egualArray", egualsArray as ArrayList)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        enteredNumber = savedInstanceState.getDouble("enteredNumber")
-        operand = savedInstanceState.getString("enteredNumber").toString()
-        default = savedInstanceState.getString("default").toString()
-        lastNumber = savedInstanceState.getString("lastNumber").toString()
-        result.text = savedInstanceState.getString("textViewData")
-       // egualsArray = savedInstanceState.getStringArrayList("egualArray") as MutableList<String>
-        }
-
-
-
-    private fun btnOpenList() {
-        send_egual_btn.setOnClickListener {
-            val intent = Intent(this, ListOfEgualsAcivity::class.java)
-            intent.putStringArrayListExtra("lais", egualsArray as ArrayList<String>)
-            startActivity(intent)
-        }
-    }
-
-    private fun setDesimalButtonsToArray() {
-        desimalArrayButtons.apply {
-            add(btn_0)
-            add(btn_1)
-            add(btn_2)
-            add(btn_3)
-            add(btn_4)
-            add(btn_5)
-            add(btn_6)
-            add(btn_7)
-            add(btn_8)
-            add(btn_9)
-            add(btn_dot)
-        }
-    }
-
-    private fun setDesimalButton() {
-        for (btn in desimalArrayButtons) {
-            btn.setOnClickListener {
-                default = result.text.toString()
-                default += btn.text
-                lastNumber += btn.text
-                result.text = default
+    private fun setSharedDataAction() {
+        set_shared_btn.setOnClickListener {
+            val value = input_edit_text.text.toString()
+            if (!value.isNullOrEmpty()) {
+                shared.myPersonalData = "${shared.myPersonalData} $value \n"
+                shared.isHasPersonalData = true
             }
+            input_edit_text.setText("")
         }
     }
 
-    private fun setOperandButtonsToArray() {
-        operandArrayButtons.apply {
-            add(btn_minus)
-            add(btn_plus)
-            add(btn_pow)
-            add(btn_division)
+    private fun getSharedDataAction() {
+        get_shared_btn.setOnClickListener {
+            from_shared_text_view.text = "${shared.myPersonalData} \n isHasData = ${shared.isHasPersonalData}"
         }
     }
-
-    private fun setOperandAllButton() {
-        for (btn in operandArrayButtons) {
-            btn.setOnClickListener { operandWorker(btn.text.toString()) }
-        }
-    }
-
-    private fun isDesimal(last: Char): Boolean {
-        val charArray = mutableListOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-
-        for (char in charArray) {
-            if (last == char) return true
-        }
-        return false
-    }
-
-
-    private fun btnClear() {
-        btn_delete.setOnClickListener {
-            enteredNumber = 0.0
-            lastNumber = ""
-            result.text = ""
-        }
-    }
-
-    private fun btnDot() {
-        btn_dot.setOnClickListener {
-            default = result.text.toString()
-            default += "."
-            lastNumber += "."
-            result.text = default
-        }
-    }
-
-    private fun operandWorker(type: String) {
-        var text = result.text.toString()
-        if (text. isNullOrEmpty()) { return }
-        default = result.text.toString()
-        if (isDesimal(default.last())) {
-            if (enteredNumber == 0.0) enteredNumber += lastNumber.toDouble()
-            lastNumber = ""
-        } else {
-        default = default.dropLast(1)
-    }
-            default += type
-            result.text = default
-            operand = type
-        }
-
-
-    private fun btnRemoveLast() {
-        btn_remove.setOnClickListener {
-            if (default.isNotEmpty()) {
-                default = default.dropLast(1)
-                result.text = default
-            }
-        }
-    }
-
-        private fun btnEguals() {
-            btn_eguals.setOnClickListener {
-                if (operand == "*") enteredNumber *= lastNumber.toDouble()
-                else if (operand == "/") enteredNumber /= lastNumber.toDouble()
-                else if (operand == "+") enteredNumber += lastNumber.toDouble()
-                else if (operand == "-") enteredNumber -= lastNumber.toDouble()
-
-                displayResult()
-            }
-        }
-
-    private fun displayResult() {
-        egualsArray.add(enteredNumber.toString())
-        val summary = if (enteredNumber % 1 == 0.0) enteredNumber.roundToInt().toString()
-        else String.format("%.2f", enteredNumber)
-        result.text = summary
-        lastNumber = ""
-    }
-
-        private fun showToast(message: String) {
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-        }
-    }
-
+}
 
 
 
