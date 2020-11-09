@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FirstApp</string>
+    <string name="field_cannot_be_emty">Поле не должно быть пустым!))</string>
+    <string name="login_is_not_find" />
+    <string name="Login_is_not_find">Ваш логин не найден!</string>
+    <string name="Enter_password">Введите пароль</string>
+    <string name="Enter_login">Введите логин</string>
+    <string name="Confirm_the_password">Подтвердите пароль</string>
+    <string name="You_have_successfully_registered">Вы успешно зарегистрировались</string>
 </resources>
