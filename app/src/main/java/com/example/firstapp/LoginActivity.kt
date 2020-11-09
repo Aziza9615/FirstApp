@@ -1,6 +1,5 @@
 package com.example.firstapp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -14,33 +13,25 @@ class LoginActivity : AppCompatActivity() {
         shared = SharedPreferences(this)
         setContentView(R.layout.activity_login)
         shared = SharedPreferences(this)
+
         loginAction()
         registrationAction()
     }
 
     private fun registrationAction() {
-        registration_btn.setOnClickListener {
-            val  intent = Intent(this, RegistationActivity::class.java)
-            startActivity(intent)
+        registration_btn.setOnClickListener click@{
+            intentToNext(this, RegistationActivity::class.java)
         }
     }
 
     private fun loginAction() {
-        authorization_btn.setOnClickListener {
+        authorization_btn.setOnClickListener click@{
             val login = input_login.text.toString()
-            if (login.isNotEmpty()) {
+            if (checkFieldIsEmpty(login, this, "Введите Логин")) return@click
+            if (checkFieldIsSame(login, shared.login, this, "Логин не найден")) return@click
 
-                if (login != shared.login) {
-                    showToast(this, resources.getString(R.string.Login_is_not_find))
-                    input_login.setText("")
-                    return@setOnClickListener
-                }
-                val intent = Intent(this, PasswordAcivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                showToast(this, resources.getString(R.string.field_cannot_be_emty))
-            }
+            intentToNext(this, PasswordActivity::class.java)
+            finish()
         }
     }
 }

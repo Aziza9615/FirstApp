@@ -17,30 +17,25 @@ class RegistationActivity : AppCompatActivity() {
     }
 
     private fun registrationAction() {
-        reg_btn.setOnClickListener {
+        reg_btn.setOnClickListener click@{
             val login = login_edit_text.text.toString()
             val password = password_edit_text.text.toString()
             val confirmPassword = confrim_password_edit_text.text.toString()
 
-            if (login.isEmpty()) {
-                showToast(this, resources.getString(R.string.Enter_login))
-                return@setOnClickListener
-            }
+            if (checkFieldIsEmpty(login, this, "Введите логин")) return@click
+            if (checkFieldIsEmpty(password, this, "Введите пароль")) return@click
+            if (checkFieldIsEmpty(confirmPassword, this, "Подтвердите пароль")) return@click
+            if (checkFieldIsSame(password, confirmPassword, this, "Пароль должен совпадать в двух полях")) return@click
 
-            if (password. isEmpty()) {
-            showToast(this, resources.getString(R.string.Enter_password))
-                return@setOnClickListener
-            }
-
-            if (confirmPassword.isEmpty()) {
-                showToast(this, resources.getString(R.string.Confirm_the_password))
-                return@setOnClickListener
-            }
-
-            shared.login = login
-            shared.password = confirmPassword
-            showToast(this, resources.getString(R.string.You_have_successfully_registered))
-            finish()
+            succesRegistered(login, confirmPassword)
         }
     }
+
+    private fun succesRegistered(login: String, confirmPassword: String) {
+        shared.login = login
+        shared.password = confirmPassword
+        showToast(this, resources.getString(R.string.You_have_successfully_registered))
+        finish()
+    }
 }
+

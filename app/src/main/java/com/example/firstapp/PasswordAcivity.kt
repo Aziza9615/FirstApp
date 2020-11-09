@@ -1,26 +1,28 @@
 package com.example.firstapp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_password.*
 
-class PasswordAcivity : AppCompatActivity() {
+class PasswordActivity : AppCompatActivity() {
+
     private lateinit var shared: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password)
-        confrimAction()
+        shared = SharedPreferences(this)
+
+        confirmAction()
     }
 
-    private fun confrimAction() {
-        chek_password_btn.setOnClickListener {
+    private fun confirmAction() {
+        check_password_btn.setOnClickListener click@ {
             val password = password_edit_text.text.toString()
-            if (password.isEmpty() && password != shared.password) return@setOnClickListener
+            if (checkFieldIsEmpty(password, this, resources.getString(R.string.The_password_was_entered_incorrectly))) return@click
+            if (checkFieldIsSame(password, shared.password, this, resources.getString(R.string.Password_entered_incorrectly))) return@click
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            intentToNext(this, MainActivity::class.java)
         }
 
     }
