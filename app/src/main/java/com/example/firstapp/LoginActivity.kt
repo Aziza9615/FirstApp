@@ -13,6 +13,12 @@ class LoginActivity : AppCompatActivity() {
         shared = SharedPreferences(this)
         setContentView(R.layout.activity_login)
         shared = SharedPreferences(this)
+        if(!shared.logout){
+            intentToNext(this, MainActivity::class.java)
+        } else {
+            loginAction()
+            registrationAction()
+        }
 
         loginAction()
         registrationAction()

@@ -6,30 +6,41 @@ import androidx.core.content.edit
 
 const val LOGIN = "login"
 const val PASSWORD = "password"
+const val LOGOUT = "logout"
 
 class SharedPreferences(context: Context) {
 
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("authorization application", Context.MODE_PRIVATE)
+    lateinit var confirmPassword: String
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("authorization application", Context.MODE_PRIVATE)
 
     var login: String
-    get() {
-        return sharedPreferences.getStringOrDefault(LOGIN)
-    }
-
-    set(value) {
-        sharedPreferences.edit {
-            putString(LOGIN, value)
+        get() {
+            return sharedPreferences.getStringOrDefault(LOGIN)
         }
-    }
+        set(value) {
+            sharedPreferences.edit {
+                putString(LOGIN, value)
+            }
+        }
 
     var password: String
         get() {
             return sharedPreferences.getStringOrDefault(PASSWORD)
         }
-
         set(value) {
             sharedPreferences.edit {
                 putString(PASSWORD, value)
+            }
+        }
+
+    var logout: Boolean
+        get() {
+            return sharedPreferences.getBoolean(LOGOUT, false)
+        }
+        set(value) {
+            sharedPreferences.edit {
+                putBoolean(LOGOUT, value)
             }
         }
 
