@@ -9,4 +9,6 @@
     <string name="You_have_successfully_registered">Вы успешно зарегистрировались</string>
     <string name="The_password_was_entered_incorrectly">Пароль введен не корректно</string>
     <string name="Password_entered_incorrectly">Пароль введен неправильно</string>
+    <string name="Item_not_found">Элемент не найден</string>
+    <string name="Cant_add_empty_value">Нельзя добавить пустое значение</string>
 </resources>
