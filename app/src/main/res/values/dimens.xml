@@ -4,4 +4,5 @@
     <dimen name="margin_32_dp">32dp</dimen>
     <dimen name="margin_8_dp">8dp</dimen>
     <dimen name="padding_8_dp">8dp</dimen>
+    <dimen name="padding_0_dp">0dp</dimen>
 </resources>

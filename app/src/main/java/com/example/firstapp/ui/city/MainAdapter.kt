@@ -1,4 +1,4 @@
-package com.example.firstapp.ui
+package com.example.firstapp.ui.city
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.City
 import com.example.firstapp.R
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private var listener: Listener): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+
     var array = mutableListOf<City>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent. context)
-            .inflate(R.layout.item_main,parent,false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_main, parent, false)
         return ViewHolder(view)
     }
 
@@ -25,7 +26,10 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         val item = array[position]
         holder.image.setImageResource(item.image)
         holder.name.text = item.name
-        holder.description.text = item.descriptor
+        holder.description.text = item.description
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(item)
+        }
     }
 
     fun updateItems(items: MutableList<City>) {
@@ -35,12 +39,16 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     fun addItem(value: City) {
         array.add(value)
-        notifyDataSetChanged()
+        notifyItemInserted(array.lastIndex)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var description: TextView = itemView.findViewById(R.id.description)
         var image: ImageView = itemView.findViewById(R.id.image)
+    }
+
+    interface Listener {
+        fun onItemClick(item: City)
     }
 }
