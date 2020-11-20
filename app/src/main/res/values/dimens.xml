@@ -5,4 +5,5 @@
     <dimen name="margin_8_dp">8dp</dimen>
     <dimen name="padding_8_dp">8dp</dimen>
     <dimen name="padding_0_dp">0dp</dimen>
+    <dimen name="text_size_20_sp">20sp</dimen>
 </resources>
