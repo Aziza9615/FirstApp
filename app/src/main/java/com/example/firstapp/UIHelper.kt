@@ -10,32 +10,44 @@ fun showToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
 
-fun showSnackbar(view: View, message: String) {
-    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
-}
-
-fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
-    if (value.isEmpty()) {
-        showToast(context, message)
-        return true
-    }
-    return false
-}
-
-fun checkFieldIsSame(first: String, second: String, context: Context, message: String): Boolean {
-    if (first != second) {
-        showToast(context, message)
-        return true
+fun showSnackbar(
+    view: View,
+    message: String,
+    actionTitle: String,
+    action: () -> Unit
+) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction(actionTitle) {
+            action()
+        }.show()
     }
 
-    if (first.length <= 6) {
-        showToast(context, "Поле не должно быть меньше 6 символов")
-        return true
+    fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
+        if (value.isEmpty()) {
+            showToast(context, message)
+            return true
+        }
+        return false
     }
-    return false
-}
 
-fun intentToNext(context: Context, clazz: Class<*>) {
-    val intent = Intent(context, clazz)
-    context.startActivity(intent)
-}
+    fun checkFieldIsSame(
+        first: String,
+        second: String,
+        context: Context,
+        message: String
+    ): Boolean {
+        if (first != second) {
+            showToast(context, message)
+            return true
+        }
+
+        if (first.length <= 6) {
+            showToast(context, "Поле не должно быть меньше 6 символов")
+            return true
+        }
+        return false
+    }
+
+    fun intentToNext(context: Context, clazz: Class<*>) {
+        val intent = Intent(context, clazz)
+        context.startActivity(intent)
+    }

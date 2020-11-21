@@ -34,7 +34,6 @@ class NewsAdapter(private var listener: Listener): RecyclerView.Adapter<NewsAdap
             listener.onItemClick(item)
         }
     }
-
         class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             var image: ImageView = itemView.findViewById(R.id.image)
             var title: TextView = itemView.findViewById(R.id.title)

@@ -9,6 +9,7 @@ import com.example.firstapp.News
 import com.example.firstapp.R
 import com.example.firstapp.newsArray
 import com.example.firstapp.showSnackbar
+import com.example.firstapp.ui.city.detail.activity.NewsDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity(), NewsAdapter.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setAdapter()
-        val item = intent.getSerializableExtra("news") as News
     }
 
     private fun setAdapter() {
@@ -28,10 +28,15 @@ class MainActivity : AppCompatActivity(), NewsAdapter.Listener {
         adapter.updateItems(newsArray)
     }
 
+    private var news: News? = null
     override fun onItemClick(item: News) {
-        showSnackbar(recycle_view, item.title)
-        val intent = Intent(this, NewsAdapter::class.java)
-        intent.putExtra("news", item)
+        news = item
+        showSnackbar(recycle_view, item.title, "Перейти", this::openDetailNews)
+    }
+
+    private fun openDetailNews() {
+        val intent = Intent(this, NewsDetailActivity::class.java)
+        intent.putExtra("news_item", news)
         startActivity(intent)
     }
 }
