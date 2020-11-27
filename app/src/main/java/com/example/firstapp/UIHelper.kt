@@ -21,6 +21,13 @@ fun showSnackbar(
         }.show()
     }
 
+fun showSnackbar(
+    view: View,
+    message: String
+){
+    Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+}
+
     fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
         if (value.isEmpty()) {
             showToast(context, message)

@@ -15,7 +15,7 @@ class NewsDetailActivity : AppCompatActivity() {
         setUpViews(item)
     }
 
-    fun setUpViews(item: News) {
+    private fun setUpViews(item: News) {
         Glide
             .with(image.context)
             .load(item.image)

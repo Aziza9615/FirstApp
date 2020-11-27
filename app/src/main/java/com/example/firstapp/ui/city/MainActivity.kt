@@ -33,8 +33,9 @@ class MainActivity: AppCompatActivity(), NewsAdapter.Listener {
     }
 
     override fun onItemClick(item: News) {
+        news = item
         val intent = Intent(this, NewsDetailActivity::class.java)
-        intent.putExtra("news_item", news)
+        intent.putExtra("news_item", item)
         startActivity(intent)
     }
 
@@ -89,16 +90,15 @@ class MainActivity: AppCompatActivity(), NewsAdapter.Listener {
         val header: TextView = inflater.findViewById(R.id.header)
         val positive: Button = inflater.findViewById(R.id.positive)
         val negative: Button = inflater.findViewById(R.id.negative)
+        val image: EditText = inflater.findViewById(R.id.image_edit_text)
         val title: EditText = inflater.findViewById(R.id.title_edit_text)
         val description: EditText = inflater.findViewById(R.id.description_edit_text)
         val dialog = alert.create()
         header.text = "Добавление новости"
         positive.text = "Добавить"
         negative.text = "Отменить"
-        title.error = "Поле не должно быть пустым"
         positive.setOnClickListener {
-            addItem(title.text.toString(), description.text.toString())
-            dialog.dismiss()
+            addItem(image, title, description, dialog)
         }
         negative.setOnClickListener {
             dialog.dismiss()
@@ -110,9 +110,26 @@ class MainActivity: AppCompatActivity(), NewsAdapter.Listener {
     //первый способ - GLIDE
     //второй способ - PICASSO
 
-    private fun addItem(title: String, description: String) {
-        var news = News("", title, description)
+    private fun addItem(imageEditText: EditText, titleEditText: EditText, descriptionEditText: EditText, dialog: AlertDialog) {
+        var error = 0
+        if(isEmptyInputData(imageEditText, "Для добавления элемента нужно добавить картинку")) error += 1
+        if(isEmptyInputData(titleEditText, "Для добавления элемента нужно добавить заголовок")) error += 1
+        if(isEmptyInputData(descriptionEditText, "Для добавления элемента нужно добавить описание")) error += 1
+
+        if (error > 0) return
+        val news = News(imageEditText.text.toString(), titleEditText.text.toString(), descriptionEditText.text.toString())
         adapter.addItem(news)
+
+        dialog.dismiss()
+    }
+
+    private fun isEmptyInputData(view: EditText, message: String): Boolean {
+        if (view.text.isNullOrEmpty()) {
+            view.error = message
+            return true
+        }
+        return false
+
     }
 }
 
