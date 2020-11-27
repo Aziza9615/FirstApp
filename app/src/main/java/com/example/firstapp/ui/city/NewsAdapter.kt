@@ -61,7 +61,13 @@ import com.example.firstapp.R
             description.text = item.description
         }
     }
-}
+
+        interface Listener {
+            fun onLongItemClick(item: News, position: Int)
+            fun onItemClick(item: News)
+
+        }
+    }
 
 
 

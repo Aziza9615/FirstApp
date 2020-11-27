@@ -27,6 +27,16 @@
         <item name="android:lines">2</item>
 </style>
 
+    <style name="AlertHeaderText">
+        <item name="android:textSize">@dimen/text_size_16_sp</item>
+        <item name="android:textColor">@color/colorHeader_text</item>
+        <item name="android:lines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/goldman_bold</item>
+    </style>
+
+
     <style name="PositiveButton">
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>

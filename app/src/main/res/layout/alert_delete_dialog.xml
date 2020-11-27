@@ -12,8 +12,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/margin_16_dp"
-        style="@style/HeaderText"
+        android:layout_marginTop="@dimen/margin_20_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        style="@style/AlertHeaderText"
         tools:text="Заголовок"/>
 
     <Button
