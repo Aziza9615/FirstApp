@@ -2,6 +2,7 @@ package com.example.firstapp.ui.city.detail.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.firstapp.News
 import com.example.firstapp.R
 import kotlinx.android.synthetic.main.activity_news_detail.*
@@ -15,7 +16,10 @@ class NewsDetailActivity : AppCompatActivity() {
     }
 
     fun setUpViews(item: News) {
-        image.setImageResource(item.image)
+        Glide
+            .with(image.context)
+            .load(item.image)
+            .into(image)
         header.text = item.title
         description.text = item.description
     }

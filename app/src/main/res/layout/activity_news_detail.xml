@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.city.detail.activity.NewsDetailActivity"
-    tools:src="@mipmap/peterburg">
+    tools:src="@mipmap/tokyo">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/image_container"

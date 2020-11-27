@@ -4,6 +4,7 @@ package com.example.firstapp.ui.city
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class MainActivity: AppCompatActivity(), NewsAdapter.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setAdapter()
+        addAction()
     }
 
     private fun setAdapter() {
@@ -72,6 +74,45 @@ class MainActivity: AppCompatActivity(), NewsAdapter.Listener {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    private fun addAction() {
+        fab.setOnClickListener {
+            showAddAlertDialog()
+        }
+    }
+
+    private fun showAddAlertDialog() {
+        val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
+        val inflater = layoutInflater.inflate(R.layout.alert_add, null)
+        alert.setView(inflater)
+        val header: TextView = inflater.findViewById(R.id.header)
+        val positive: Button = inflater.findViewById(R.id.positive)
+        val negative: Button = inflater.findViewById(R.id.negative)
+        val title: EditText = inflater.findViewById(R.id.title_edit_text)
+        val description: EditText = inflater.findViewById(R.id.description_edit_text)
+        val dialog = alert.create()
+        header.text = "Добавление новости"
+        positive.text = "Добавить"
+        negative.text = "Отменить"
+        title.error = "Поле не должно быть пустым"
+        positive.setOnClickListener {
+            addItem(title.text.toString(), description.text.toString())
+            dialog.dismiss()
+        }
+        negative.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    // в андроид есть два способа загрузить фото с интернета
+    //первый способ - GLIDE
+    //второй способ - PICASSO
+
+    private fun addItem(title: String, description: String) {
+        var news = News("", title, description)
+        adapter.addItem(news)
     }
 }
 
