@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.city.detail.activity.NewsDetailActivity"/>
-        <activity android:name=".ui.city.MainActivity">
+        <activity android:name="com.example.firstapp.ui.Contacts.NewsDetailActivity"/>
+        <activity android:name="com.example.firstapp.ui.Contacts.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.ui.Contacts.helper
 
 import android.content.Context
 import android.content.Intent
@@ -48,7 +48,10 @@ fun showSnackbar(
         }
 
         if (first.length <= 6) {
-            showToast(context, "Поле не должно быть меньше 6 символов")
+            showToast(
+                context,
+                "Поле не должно быть меньше 6 символов"
+            )
             return true
         }
         return false
