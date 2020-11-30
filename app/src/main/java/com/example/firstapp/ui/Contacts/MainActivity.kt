@@ -1,17 +1,24 @@
 package com.example.firstapp.ui.Contacts
 
-
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.Contact.ContactAdapter
+import com.example.firstapp.ui.Contacts.detail.DetailContactActivity
+import com.example.firstapp.ui.Contacts.helper.ItemSimpleTouch
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity: AppCompatActivity() {
+
+
+class MainActivity: AppCompatActivity(), ContactAdapter.OnItemClick {
 
     private lateinit var adapter: ContactAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +29,22 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        adapter = ContactAdapter()
+        adapter = ContactAdapter(this)
         recycle_view.adapter = adapter
         recycle_view.layoutManager = LinearLayoutManager(this)
         adapter.addItems(contactArray)
 
+
+
+        val swipeHandler = object : ItemSimpleTouch(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                adapter.array.removeAt(direction)
+                adapter.notifyDataSetChanged()
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(recycle_view)
     }
 
     private fun addAction() {
@@ -64,17 +82,23 @@ class MainActivity: AppCompatActivity() {
         dialog.show()
     }
 
-    private fun addNewContact(imageEditText: EditText, nameEditText: EditText, lastNameEditText: EditText, emailEditText: EditText, dialog: AlertDialog) {
+    private fun addNewContact(
+        imageEditText: EditText,
+        nameEditText: EditText,
+        lastNameEditText: EditText,
+        emailEditText: EditText,
+        dialog: AlertDialog
+    ) {
         val image = imageEditText.text.toString()
         val name = nameEditText.text.toString()
         val lastName = lastNameEditText.text.toString()
         val email = emailEditText.text.toString()
         var errorCount = 0
 
-        if (checkIsEmptyField(imageEditText)) errorCount +=1
-        if (checkIsEmptyField(nameEditText)) errorCount +=1
-        if (checkIsEmptyField(lastNameEditText)) errorCount +=1
-        if (checkIsEmptyField(emailEditText)) errorCount +=1
+        if (checkIsEmptyField(imageEditText)) errorCount += 1
+        if (checkIsEmptyField(nameEditText)) errorCount += 1
+        if (checkIsEmptyField(lastNameEditText)) errorCount += 1
+        if (checkIsEmptyField(emailEditText)) errorCount += 1
 
         if (errorCount > 0) return
 
@@ -90,6 +114,10 @@ class MainActivity: AppCompatActivity() {
         return false
     }
 
+    override fun onItemClick(item: Contacts) {
+        val intent = Intent(this, DetailContactActivity::class.java)
+        startActivity(intent)
+    }
 }
 
 

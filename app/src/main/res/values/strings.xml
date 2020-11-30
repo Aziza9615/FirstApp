@@ -11,4 +11,6 @@
     <string name="Password_entered_incorrectly">Пароль введен неправильно</string>
     <string name="Item_not_found">Элемент не найден</string>
     <string name="Cant_add_empty_value">Нельзя добавить пустое значение</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

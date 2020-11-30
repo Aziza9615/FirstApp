@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts
+package com.example.firstapp.ui.Contacts.Contact
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.Contacts
 
-class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
    var array = mutableListOf<Contacts>()
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
       val view = LayoutInflater.from(parent.context).inflate(R.layout.item_contact, parent, false)
-      return ContactViewHolder(view)
+      return ContactViewHolder(
+         view
+      )
    }
 
    override fun getItemCount(): Int {
@@ -24,6 +27,9 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
       val item = array[position]
       holder.bind(item)
+      holder.itemView.setOnClickListener {
+         Listener.onItemClick(item)
+      }
    }
 
    fun addItems(item: MutableList<Contacts>) {
@@ -50,6 +56,10 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
          firstName.text = item.firstName
          lastName.text = item.lastName
       }
+   }
+
+   interface OnItemClick {
+      fun onItemClick(item: Contacts)
    }
 }
 
