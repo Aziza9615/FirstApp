@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.Contacts
+import com.example.firstapp.ui.Contacts.contactArray
 
 class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
@@ -39,6 +40,7 @@ class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<C
 
    fun addItem(item: Contacts) {
       array.add(item)
+      contactArray.add(item)
       notifyItemInserted(array.lastIndex)
    }
 
@@ -59,6 +61,7 @@ class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<C
    }
 
    interface OnItemClick {
+      fun onItemClick(item: Contacts, fragment: Any)
       fun onItemClick(item: Contacts)
    }
 }

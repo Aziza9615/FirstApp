@@ -1,16 +1,21 @@
 package com.example.firstapp.ui.Contacts.helper
 
+import android.app.Dialog
+import android.content.Context
+import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.Contacts
+import kotlinx.android.synthetic.main.alert_add.*
 
 interface OnDialogListener {
     fun onSingleAction() { }
 }
 
-fun showSingleActionDialog( action: () -> Unit, activity: AppCompatActivity, header: String, positive: String, negativ: String) {
+fun showSingleActionDialog( action: () -> Unit, activity: AppCompatActivity, header: String, positive: String, negative: String) {
     val alert = AlertDialog.Builder(activity,R.style.NewsDialogStyle)
 
     val inflater = activity.layoutInflater.inflate(R.layout.alert_add, null)
@@ -21,7 +26,7 @@ fun showSingleActionDialog( action: () -> Unit, activity: AppCompatActivity, hea
     val dialog = alert.create()
     headerTextView.text = header //"Добавление новости"
     positiveButton.text = positive //"Добавить"
-    negativeButton.text = negativ //"Отменить"
+    negativeButton.text = negative //"Отменить"
 
     positiveButton.setOnClickListener {
         action
@@ -32,6 +37,28 @@ fun showSingleActionDialog( action: () -> Unit, activity: AppCompatActivity, hea
     }
     dialog.show()
 }
+
+class ShowAddEditingDialog(context: Context, var headerTitle: String, var listener: OnAddEditListener, var type: Int): Dialog(context, R.style.NewsDialogStyle) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.alert_add)
+        header.text = headerTitle
+        negative.setOnClickListener { dismiss() }
+        positive.setOnClickListener {listener.addEditingDialog(type, Contacts
+            (image_edit_text.text.toString(),
+            name_edit_text.text.toString(),
+            lastName_edit_text.text.toString(),
+            email_edit_text.text.toString()))}
+    }
+}
+
+interface OnAddEditListener {
+    fun addEditingDialog(type: Int, contacts: Contacts)
+}
+
+        //addNewContact(imageEditText, nameEditText, lastNameEditText, emailEditText, dialog)
+
 
 
 
