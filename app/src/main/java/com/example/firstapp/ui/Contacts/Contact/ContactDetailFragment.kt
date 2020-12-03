@@ -38,8 +38,6 @@ class ContactDetailFragment : Fragment() {
         name.text = contacts.firstName
         lastName.text = contacts.lastName
         email.text = contacts.email
-        
-
     }
 }
 

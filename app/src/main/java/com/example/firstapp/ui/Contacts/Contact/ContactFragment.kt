@@ -18,6 +18,7 @@ import com.example.firstapp.ui.Contacts.contactArray
 import com.example.firstapp.ui.Contacts.helper.ItemSimpleTouch
 import com.example.firstapp.ui.Contacts.helper.OnAddEditListener
 import com.example.firstapp.ui.Contacts.helper.ShowAddEditingDialog
+import com.example.firstapp.ui.Contacts.helper.showSnackbar
 import kotlinx.android.synthetic.main.fragment_contact.*
 
 class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListener {
@@ -26,9 +27,7 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
     lateinit var mContext: Context
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        activity?.applicationContext?.let { mContext = it }
+        savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_contact, container, false)
     }
 
@@ -41,13 +40,18 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
     private fun setAdapter() {
         adapter = ContactAdapter(this)
         recycler_view.adapter = adapter
-        recycler_view.layoutManager = LinearLayoutManager(activity)
+        recycler_view.layoutManager = LinearLayoutManager(requireContext())
         adapter.addItems(contactArray)
 
-        val swipeHandler = object : ItemSimpleTouch(mContext) {
+        val swipeHandler = object : ItemSimpleTouch(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 adapter.array.removeAt(direction)
                 adapter.notifyDataSetChanged()
+                //Вызвать отображение  SnackBar с возможностью востановить элемент
+                val position = viewHolder.adapterPosition
+                val contact = contactArray[position]
+                adapter.removeItem(position)
+                showSnackbar(fab, "Вы удалили контакт", "Востановить") { adapter.restoreItem(position, contact) }
             }
         }
 
@@ -73,6 +77,7 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
         TODO("Not yet implemented")
     }
 
+
     private fun addAction() {
         fab.setOnClickListener {
             activity?.let {
@@ -81,29 +86,6 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
         }
     }
 
-//    private fun addNewContact(
-//        imageEditText: EditText,
-//        nameEditText: EditText,
-//        lastNameEditText: EditText,
-//        emailEditText: EditText,
-//        dialog: AlertDialog) {
-//
-//        val image = imageEditText.text.toString()
-//        val name = nameEditText.text.toString()
-//        val lastName = lastNameEditText.text.toString()
-//        val email = emailEditText.text.toString()
-//        var errorCount = 0
-//
-//        if (checkIsEmptyField(imageEditText)) errorCount += 1
-//        if (checkIsEmptyField(nameEditText)) errorCount += 1
-//        if (checkIsEmptyField(lastNameEditText)) errorCount += 1
-//        if (checkIsEmptyField(emailEditText)) errorCount += 1
-//
-//        if (errorCount > 0) return
-//        adapter.addItem(Contacts(image, name, lastName, email))
-//        dialog.dismiss()
-//    }
-    
 
     fun checkIsEmptyField(editText: EditText): Boolean {
         if (editText.text.toString().isEmpty()) {

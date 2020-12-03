@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.Contacts.detail.DetailContactActivity">
 
+   
+
 </androidx.constraintlayout.widget.ConstraintLayout>

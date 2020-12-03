@@ -3,6 +3,7 @@ package com.example.firstapp.ui.Contacts.helper
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 
@@ -28,7 +29,7 @@ fun showSnackbar(
     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
 }
 
-    fun checkFieldIsEmpty(value: String, context: Context, message: String): Boolean {
+    fun checkIsEmptyField(value: EditText, context: Context, message: String): Boolean {
         if (value.isEmpty()) {
             showToast(context, message)
             return true
@@ -36,7 +37,11 @@ fun showSnackbar(
         return false
     }
 
-    fun checkFieldIsSame(
+private fun EditText.isEmpty(): Boolean {
+    TODO("Not yet implemented")
+}
+
+fun checkFieldIsSame(
         first: String,
         second: String,
         context: Context,

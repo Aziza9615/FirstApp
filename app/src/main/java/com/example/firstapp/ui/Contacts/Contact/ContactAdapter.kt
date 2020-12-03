@@ -16,17 +16,17 @@ class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<C
    var array = mutableListOf<Contacts>()
    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
       val view = LayoutInflater.from(parent.context).inflate(R.layout.item_contact, parent, false)
-      return ContactViewHolder(
-         view
-      )
+      return ContactViewHolder(view)
    }
 
    override fun getItemCount(): Int {
       return array.count()
+      return contactArray.count()
    }
 
    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
       val item = array[position]
+      val contacts = contactArray[position]
       holder.bind(item)
       holder.itemView.setOnClickListener {
          Listener.onItemClick(item)
@@ -42,7 +42,18 @@ class ContactAdapter(private var Listener: OnItemClick) : RecyclerView.Adapter<C
       array.add(item)
       contactArray.add(item)
       notifyItemInserted(array.lastIndex)
+      notifyItemInserted(contactArray.lastIndex)
    }
+
+   fun removeItem(item: Int) {
+      //Выполнить логику удаления
+   }
+   fun restoreItem(position: Int, item: Contacts) {
+      contactArray.add(position, item)
+      notifyItemInserted(position)
+      notifyItemRangeChanged(position, itemCount)
+   }
+
 
    class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
       private val icon: ImageView = itemView.findViewById(R.id.icon)

@@ -7,7 +7,8 @@ data class Contacts(
     var firstName: String,
     var lastName: String,
     var email: String
-) :Serializable
+) :Serializable {
+}
 
 var contactArray = mutableListOf<Contacts>().apply {
     add(Contacts("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRc6zuYQchBnsKnGc6VYB2PFHFhmyxgQ6IDA&usqp=CAU", "Aziza", "Sadykova", "azizaS"))

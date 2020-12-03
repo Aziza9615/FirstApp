@@ -9,11 +9,11 @@ import com.example.firstapp.ui.Contacts.ContactFragment.ContactFragment
 class MainActivity: AppCompatActivity() {//, ContactAdapter.OnItemClick {
 
 
-    //    private lateinit var adapter: ContactAdapter
+    //private lateinit var adapter: ContactAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setAdapter()
+//        setAdapter()
 //        addAction()
         supportFragmentManager.beginTransaction().add(R.id.container_fragment, ContactFragment()).commit()
     }
@@ -44,9 +44,9 @@ class MainActivity: AppCompatActivity() {//, ContactAdapter.OnItemClick {
 //            showAddingMemberActionDialog()
 //        }
 //    }
-//
+
 //    fun showAddingMemberActionDialog() {
-//        val alert = AlertDialog.Builder(this, R.style.NewsDialogStyle)
+//        val alert = AlertDialog.Builder(, R.style.NewsDialogStyle)
 //
 //        val inflater = layoutInflater.inflate(R.layout.alert_add, null)
 //        alert.setView(inflater)
@@ -73,7 +73,7 @@ class MainActivity: AppCompatActivity() {//, ContactAdapter.OnItemClick {
 //        }
 //        dialog.show()
 //    }
-//
+
 //    private fun addNewContact(
 //        imageEditText: EditText,
 //        nameEditText: EditText,

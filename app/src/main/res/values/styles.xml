@@ -61,4 +61,5 @@
         <item name="android:windowBackground">@drawable/bgr_alert_dialog</item>
     </style>
 
+
 </resources>
