@@ -74,7 +74,6 @@ class ContactFragment : Fragment(), ContactAdapter.OnItemClick, OnAddEditListene
     }
 
     override fun onItemClick(item: Contacts) {
-        TODO("Not yet implemented")
     }
 
 
