@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.Contacts.Contact.profile.EditProfileActivity"></activity>
+        <activity android:name=".ui.Contacts.helper.adapter.cat.CatDetailActivity"></activity>
+        <activity android:name=".ui.Contacts.Contact.profile.EditProfileActivity" />
         <activity android:name=".ui.Contacts.detail.DetailContactActivity" />
         <activity android:name=".ui.Contacts.NewsDetailActivity" />
         <activity android:name=".ui.Contacts.MainActivity">
