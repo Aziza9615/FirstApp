@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper
 
 class onAddEditListener {
     fun addEditingDialog(type: Int, contacts: Any) {

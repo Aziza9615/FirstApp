@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper
 
 import android.content.Context
 import android.content.Intent
@@ -31,10 +31,7 @@ fun showSnackbar(
 
     fun checkIsEmptyField(value: EditText, context: Context, message: String): Boolean {
         if (value.isEmpty()) {
-            showToast(
-                context,
-                message
-            )
+            showToast(context, message)
             return true
         }
         return false
@@ -51,10 +48,7 @@ fun checkFieldIsSame(
         message: String
     ): Boolean {
         if (first != second) {
-            showToast(
-                context,
-                message
-            )
+            showToast(context, message)
             return true
         }
 

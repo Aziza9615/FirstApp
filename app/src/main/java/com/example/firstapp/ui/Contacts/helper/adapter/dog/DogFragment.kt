@@ -18,11 +18,12 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_dog, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         setupAdapter()
     }
 
@@ -31,12 +32,12 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(activity?.applicationContext)
         adapter.addItems(dogArray)
-
     }
 
-    override fun onItemClick(item: Pet) {
+    override fun OnItemClick(item: Pet) {
         val intent = Intent(activity, DogDetailActivity::class.java)
         intent.putExtra("dog", item)
         startActivity(intent)
+
     }
 }

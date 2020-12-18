@@ -5,25 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
-import kotlinx.android.synthetic.main.activity_cat_detail.*
+import kotlinx.android.synthetic.main.dog_detail_activity.*
 
 class DogDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dog_detail_activity)
         val item = intent.getSerializableExtra("dog") as Pet
-        setupViews(item)
+        setUpViews(item)
     }
 
-    private fun setupViews(item: Pet) {
+    private fun setUpViews(item: Pet) {
         Glide.with(this)
             .load(item.image)
-            .into(image)
+            .into(image2)
 
-        header.text = item.name
-        title_two.text = item.description
+        header2.text = item.name
+        title_two2.text = item.description
         val likeDrawable = if (item.isLiked) R.drawable.ic_dizlike
         else R.drawable.ic_like
-        like.setImageResource(likeDrawable)
+        like2.setImageResource(likeDrawable)
     }
 }

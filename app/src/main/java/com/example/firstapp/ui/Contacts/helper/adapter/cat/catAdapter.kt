@@ -12,7 +12,7 @@ import com.example.firstapp.R
 
 class CatAdapter(private var listener: OnItemClick): RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
 
-    var array = mutableListOf<Pet>()
+    private var array = mutableListOf<Pet>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cat, parent, false)
@@ -71,24 +71,12 @@ class CatAdapter(private var listener: OnItemClick): RecyclerView.Adapter<CatAda
         }
     }
 
-    fun removeItem(item: Int) {
-        //Выполнить логику удаления
-    }
-
-    fun restoreItem(item: Pet, position: Int) {
-        array.add(position, item)
-        notifyItemInserted(position)
-    }
-
     interface OnItemClick {
-        val ItemSwipe: Any
-
         fun OnItemClick(item: Pet)
-        fun CatFragment(swipeHandler: ItemSwipe): CatFragment
     }
 }
 
-fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_dizlike
+    fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_dizlike
     else R.drawable.ic_like
 
 

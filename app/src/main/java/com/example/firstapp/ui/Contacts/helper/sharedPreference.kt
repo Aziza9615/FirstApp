@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper
 
 //import android.content.Context
 //import

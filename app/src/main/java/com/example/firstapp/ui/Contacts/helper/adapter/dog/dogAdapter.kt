@@ -11,38 +11,45 @@ import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
 
-class DogAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<DogAdapter.CatViewHolder>() {
+class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogAdapter.DogViewHolder>() {
 
     private var array = mutableListOf<Pet>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dog, parent, false)
-        return CatViewHolder(view)
+        return DogViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
         return array.count()
     }
 
-    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         val item = array[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            listener.onItemClick(item)
-        }
+            listener.OnItemClick(item)
+    }
         holder.like.setOnClickListener {
             val like = !array[position].isLiked
-            array[position].isLiked = like
-            holder.like.setImageResource(getLikeImage(like))
+            array[position].isLiked = array[position].isLiked
+            item.isLiked = !item.isLiked
+            val image = if (item.isLiked) R.drawable.ic_dizlike
+            else R.drawable.ic_like
+
+            holder.like.setImageResource(image)
         }
-    }
+
+}
 
     fun addItems(items: MutableList<Pet>) {
         array = items
         notifyDataSetChanged()
     }
 
-    class CatViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class DogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
@@ -61,9 +68,8 @@ class DogAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<DogAd
     }
 
     interface OnItemClick {
-        fun onItemClick(item: Pet)
+        fun OnItemClick(item: Pet)
     }
-
 }
 
 fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_dizlike
