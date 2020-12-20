@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
+import com.example.firstapp.ui.Contacts.helper.adapter.cat.dogArray
 import kotlinx.android.synthetic.main.fragment_cat2.*
 
 class DogFragment : Fragment(), DogAdapter.OnItemClick {
@@ -34,10 +35,9 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         adapter.addItems(dogArray)
     }
 
-    override fun OnItemClick(item: Pet) {
+    override fun onItemClick(item: Pet) {
         val intent = Intent(activity, DogDetailActivity::class.java)
         intent.putExtra("dog", item)
         startActivity(intent)
-
     }
 }
