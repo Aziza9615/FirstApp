@@ -1,59 +1,16 @@
 package com.example.firstapp.ui.Contacts.helper
 
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.core.content.edit
-
-const val NAME = "name"
-const val SURNAME = "surname"
-const val IMAGE = "image"
-const val PHONE_NUMBER = "phoneNumber"
-
-class SharedPreferences(context: Context) {
-
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("application", Context.MODE_PRIVATE)
-
-    var name: String
-        get() {
-            return sharedPreferences.getStringOrDefault(NAME, "Aziza")
-        }
-        set(value) {
-            sharedPreferences.edit {
-                putString(NAME, value)
-            }
-        }
-
-    var surname: String
-        get() {
-            return sharedPreferences.getStringOrDefault(SURNAME, "Sadykova")
-        }
-        set(value) {
-            sharedPreferences.edit {
-                putString(SURNAME, value)
-            }
-        }
-
-    var image: String
-        get() {
-            return sharedPreferences.getStringOrDefault(IMAGE, "https://knowhow.pp.ua/wp-content/uploads/2020/05/unnamed-2.jpg")
-        }
-        set(value) {
-            sharedPreferences.edit {
-                putString(IMAGE, value)
-            }
-        }
-
-    var phoneNumber: String
-        get() {
-            return sharedPreferences.getStringOrDefault(PHONE_NUMBER, "+99654657574")
-        }
-        set(value) {
-            return sharedPreferences.edit {
-                putString(PHONE_NUMBER, value)
-            }
-        }
-
-    private fun SharedPreferences.getStringOrDefault(key: String, default: String = "") =
-        getString(key, default) ?: default
-}
-
+//import android.content.Context
+//import
+//
+//const val LOGIN = login
+//const val PASSWORD = passwword
+//
+//class SharedPreference(context: Context) {
+//    private val sharedPreference: SharedPreference = context.getSharedPreferences("authorization-application", Context)
+//
+//    var login: String
+//    get() {
+//
+//    }
+//}
