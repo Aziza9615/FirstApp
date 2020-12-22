@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
+import com.example.firstapp.ui.Contacts.helper.adapter.cat.dogArray
 import kotlinx.android.synthetic.main.fragment_cat2.*
 
 class DogFragment : Fragment(), DogAdapter.OnItemClick {
@@ -22,8 +23,8 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         return inflater.inflate(R.layout.fragment_dog, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupAdapter()
     }
 
