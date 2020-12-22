@@ -32,6 +32,7 @@ class MainActivity: AppCompatActivity() {
             when (it.itemId) {
                 R.id.pets -> view_pager.setCurrentItem(0, false)
                 R.id.profile -> view_pager.setCurrentItem(1, false)
+                R.id.favorite -> view_pager.setCurrentItem(1, false)
             }
             true
         }

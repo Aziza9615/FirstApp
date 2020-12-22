@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.helper.adapter.Favorite.FavoritesPetsFragment
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.CatFragment
 import com.example.firstapp.ui.Contacts.helper.adapter.dog.DogFragment
 import com.google.android.material.tabs.TabLayout
@@ -34,6 +35,7 @@ class PetFragment : Fragment() {
         viewPagerAdapter = PetViewPagerAdapter(childFragmentManager)
         viewPagerAdapter.addFragment(CatFragment(), "Котики")
         viewPagerAdapter.addFragment(DogFragment(),"Собаки")
+        viewPagerAdapter.addFragment(FavoritesPetsFragment(),"Favorite")
         view_pager.adapter = viewPagerAdapter
     }
 
