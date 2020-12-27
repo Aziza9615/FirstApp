@@ -3,6 +3,7 @@ package com.example.firstapp.ui.Contacts
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.helper.adapter.Favorite.FavoritesPetsFragment
 import com.example.firstapp.ui.Contacts.helper.adapter.MainViewPagerAdapter
 import com.example.firstapp.ui.Contacts.helper.adapter.Pet.PetFragment
 import com.example.firstapp.ui.Contacts.helper.adapter.Pet.ProfileFragment
@@ -24,6 +25,7 @@ class MainActivity: AppCompatActivity() {
         adapter = MainViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(PetFragment())
         adapter.addFragment(ProfileFragment())
+        adapter.addFragment(FavoritesPetsFragment())
         view_pager.adapter = adapter
     }
 
@@ -32,7 +34,7 @@ class MainActivity: AppCompatActivity() {
             when (it.itemId) {
                 R.id.pets -> view_pager.setCurrentItem(0, false)
                 R.id.profile -> view_pager.setCurrentItem(1, false)
-                R.id.favorite -> view_pager.setCurrentItem(1, false)
+                R.id.favorite -> view_pager.setCurrentItem(2, false)
             }
             true
         }

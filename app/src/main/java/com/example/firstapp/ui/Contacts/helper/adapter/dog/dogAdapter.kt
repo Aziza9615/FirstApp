@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
 
-class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogAdapter.DogViewHolder>() {
+class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogViewHolder>() {
 
     private var array = mutableListOf<Pet>()
 
@@ -30,8 +30,8 @@ class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogAda
         val item = array[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            listener.OnItemClick(item)
-    }
+            listener.onItemClick(item)
+        }
         holder.like.setOnClickListener {
             val like = !array[position].isLiked
             array[position].isLiked = array[position].isLiked
@@ -42,14 +42,19 @@ class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogAda
             holder.like.setImageResource(image)
         }
 
-}
+    }
 
     fun addItems(items: MutableList<Pet>) {
         array = items
         notifyDataSetChanged()
     }
 
-    class DogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    interface OnItemClick {
+        fun onItemClick(item: Pet)
+    }
+}
+
+    class DogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)
@@ -63,14 +68,9 @@ class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogAda
             title.text = item.name
             title_two.text = item.description
 
-            like.setImageResource(getLikeImage(item.isLiked))
+            like.setImageResource(com.example.firstapp.ui.Contacts.helper.adapter.dog.getLikeImage(item.isLiked))
         }
     }
-
-    interface OnItemClick {
-        fun OnItemClick(item: Pet)
-    }
-}
 
 fun getLikeImage(state: Boolean) = if (state)  R.drawable.ic_dizlike
 else R.drawable.ic_like

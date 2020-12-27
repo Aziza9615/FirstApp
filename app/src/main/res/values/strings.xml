@@ -22,4 +22,5 @@
     <string name="edit1">Редактировать</string>
     <string name="pets">Pets</string>
     <string name="save">Сохранить</string>
+    <string name="favorite">favorite</string>
 </resources>

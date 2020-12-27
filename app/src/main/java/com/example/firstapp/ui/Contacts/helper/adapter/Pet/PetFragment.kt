@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.firstapp.R
-import com.example.firstapp.ui.Contacts.helper.adapter.Favorite.FavoritesPetsFragment
+import com.example.firstapp.ui.Contacts.helper.adapter.Pet.adapter.PetViewPagerAdapter
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.CatFragment
 import com.example.firstapp.ui.Contacts.helper.adapter.dog.DogFragment
 import com.google.android.material.tabs.TabLayout
@@ -16,12 +16,10 @@ import kotlinx.android.synthetic.main.fragment_pet.*
 class PetFragment : Fragment() {
 
     private lateinit var viewPagerAdapter: PetViewPagerAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_pet, container, false)
     }
 
@@ -34,8 +32,7 @@ class PetFragment : Fragment() {
     private fun setupViewPager() {
         viewPagerAdapter = PetViewPagerAdapter(childFragmentManager)
         viewPagerAdapter.addFragment(CatFragment(), "Котики")
-        viewPagerAdapter.addFragment(DogFragment(),"Собаки")
-        viewPagerAdapter.addFragment(FavoritesPetsFragment(),"Favorite")
+        viewPagerAdapter.addFragment(DogFragment(), "Собачки")
         view_pager.adapter = viewPagerAdapter
     }
 

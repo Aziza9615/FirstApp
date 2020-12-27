@@ -35,7 +35,7 @@ class DogFragment : Fragment(), DogAdapter.OnItemClick {
         adapter.addItems(dogArray)
     }
 
-    override fun OnItemClick(item: Pet) {
+    override fun onItemClick(item: Pet) {
         val intent = Intent(activity, DogDetailActivity::class.java)
         intent.putExtra("dog", item)
         startActivity(intent)

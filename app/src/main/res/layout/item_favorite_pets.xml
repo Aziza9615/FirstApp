@@ -5,46 +5,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_margin="@dimen/margin_16_dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/ic_launcher_background"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/margin_0_dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="@id/image"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintStart_toStartOf="@+id/container_image"
+        app:layout_constraintTop_toBottomOf="@+id/container_image"
+        tools:text="Title"
         app:layout_constraintEnd_toStartOf="@+id/like"
-        android:layout_marginStart="@dimen/margin_16_dp"
-        android:layout_marginEnd="@dimen/margin_16_dp"/>
+        android:layout_marginTop="@dimen/margin_16_dp"/>
 
     <TextView
-        android:id="@+id/title_two"
-        android:layout_width="0dp"
+        android:id="@+id/subtitle"
+        android:layout_width="@dimen/margin_0_dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:ellipsize="end"
+        android:lines="3"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        tools:text="Subtitle"
         app:layout_constraintEnd_toStartOf="@+id/like"
-        android:layout_marginStart="@dimen/margin_16_dp"
-        android:layout_marginEnd="@dimen/margin_16_dp"
-        android:layout_marginTop="@dimen/margin_16_dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_16_dp"/>
 
     <ImageButton
         android:id="@+id/like"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/margin_16_dp"
-        android:background="@null"
-        android:src="@drawable/ic_like" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/container_image"
+        app:layout_constraintTop_toBottomOf="@+id/container_image"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:background="@drawable/ic_like"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
