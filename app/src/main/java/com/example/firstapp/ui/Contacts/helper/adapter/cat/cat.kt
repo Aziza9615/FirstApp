@@ -11,7 +11,7 @@ data class Pet (
     var species: String
 ) : Serializable
 
-val catArray = mutableListOf<Pet>().apply {
+val petArray = mutableListOf<Pet>().apply {
     add(Pet("https://petstime.ru/sites/default/files/styles/article-600/public/inline/images/angliyskie1.jpg?itok=YbmUSUmb", "Tom", "30", true, "Hate Jerry", "home"))
     add(Pet("https://petstime.ru/sites/default/files/styles/article-600/public/inline/images/angliyskie2.jpg?itok=ecOfLA1B","Jeny", "28", false, "Little kitty", "swinks"))
     add(Pet("https://petstime.ru/sites/default/files/styles/article-600/public/inline/images/angliyskie3.jpg?itok=m-BJQfhT", "Ki", "18", false, "Ко́шка, или дома́шняя ко́шка, — домашнее животное, одно из наиболее популярных «животных-компаньонов».", "Canadian"))
@@ -29,7 +29,12 @@ val dogArray = mutableListOf<Pet>().apply {
     add(Pet("https://petstime.ru/sites/default/files/styles/article-600/public/inline/images/angliyskie6.jpeg?itok=_uuhQzER","Jasper", "10", true, "Ко́шка, или дома́шняя ко́шка, — домашнее животное, одно из наиболее популярных «животных-компаньонов».", "home"))
 }
 
-val favoritesArray = mutableListOf<Pet>().apply {
-    addAll(catArray.filter { it.isLiked })
+fun changeState(item: Pet, array: MutableList<Pet>) {
+    for (i in array)
+        if (i == item) item.isLiked = !item.isLiked
+}
+
+val getFavoritesArray = mutableListOf<Pet>().apply {
+    addAll(petArray.filter { it.isLiked })
     addAll(dogArray.filter { it.isLiked })
 }

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
-import com.example.firstapp.ui.Contacts.helper.adapter.cat.favoritesArray
+import com.example.firstapp.ui.Contacts.helper.adapter.cat.changeState
+import com.example.firstapp.ui.Contacts.helper.adapter.cat.getFavoritesArray
+import com.example.firstapp.ui.Contacts.helper.adapter.cat.petArray
 import com.example.firstapp.ui.Contacts.helper.showSnackbar
 import kotlinx.android.synthetic.main.fragment_cat2.*
 
@@ -27,17 +29,31 @@ class FavoritesPetsFragment : Fragment(), PetsAdapter.OnItemClick {
         setupAdapter()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateItems()
+    }
+
     private fun setupAdapter() {
         adapter = PetsAdapter(this)
         recycler_view.layoutManager = LinearLayoutManager(requireContext())
         recycler_view.adapter = adapter
-        adapter.addItems(favoritesArray)
+    }
+
+    private fun updateItems() {
+        adapter.addItems(getFavoritesArray)
     }
 
     override fun onLikeClick(position: Int, item: Pet) {
         adapter.removeItem(position)
+        changeItems(item)
         showSnackbar(recycler_view,
             "Вы удалили из избранного ${item.name}",
             "Восстановить")  { adapter.restoreItem(position, item)}
+    }
+
+    private fun changeItems(item: Pet) {
+        changeState(item, petArray)
+        changeState(item, petArray)
     }
 }

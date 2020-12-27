@@ -7,11 +7,11 @@ import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
 import kotlinx.android.synthetic.main.dog_detail_activity.*
 
-class DogDetailActivity : AppCompatActivity() {
+class PetDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dog_detail_activity)
-        val item = intent.getSerializableExtra("dog") as Pet
+        val item = intent.getSerializableExtra("pet") as Pet
         setUpViews(item)
     }
 

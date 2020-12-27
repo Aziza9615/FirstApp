@@ -22,11 +22,14 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        adapter = MainViewPagerAdapter(supportFragmentManager)
+        adapter = MainViewPagerAdapter(this)
         adapter.addFragment(PetFragment())
         adapter.addFragment(ProfileFragment())
         adapter.addFragment(FavoritesPetsFragment())
+        view_pager.offscreenPageLimit = 3
         view_pager.adapter = adapter
+        view_pager.isEnabled = false
+        view_pager.isUserInputEnabled = false
     }
 
     private fun setupBottomNavigation() {

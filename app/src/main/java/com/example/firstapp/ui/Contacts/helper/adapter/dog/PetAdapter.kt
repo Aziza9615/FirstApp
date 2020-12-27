@@ -11,13 +11,14 @@ import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.cat.Pet
 
-class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogViewHolder>() {
+class PetAdapter(private var listener: OnItemClick) : RecyclerView.Adapter<PetViewHolder>() {
+
 
     private var array = mutableListOf<Pet>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dog, parent, false)
-        return DogViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pet, parent, false)
+        return PetViewHolder(
             view
         )
     }
@@ -26,7 +27,7 @@ class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogVie
         return array.count()
     }
 
-    override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
         val item = array[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
@@ -54,7 +55,7 @@ class DogAdapter(private var listener: OnItemClick): RecyclerView.Adapter<DogVie
     }
 }
 
-    class DogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val image: ImageView = itemView.findViewById(R.id.image)
         val title: TextView = itemView.findViewById(R.id.title)

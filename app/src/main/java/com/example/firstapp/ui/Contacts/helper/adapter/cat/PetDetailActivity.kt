@@ -9,11 +9,11 @@ import kotlinx.android.synthetic.main.item_cat.image
 import kotlinx.android.synthetic.main.item_cat.like
 import kotlinx.android.synthetic.main.item_cat.title_two
 
-class CatDetailActivity : AppCompatActivity() {
+class PetDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cat_detail)
-          val item = intent.getSerializableExtra("cat") as Pet
+          val item = intent.getSerializableExtra("pet") as Pet
         setUpViews(item)
     }
 

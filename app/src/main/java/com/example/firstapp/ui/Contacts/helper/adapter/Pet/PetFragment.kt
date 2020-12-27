@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.firstapp.R
 import com.example.firstapp.ui.Contacts.helper.adapter.Pet.adapter.PetViewPagerAdapter
-import com.example.firstapp.ui.Contacts.helper.adapter.cat.CatFragment
-import com.example.firstapp.ui.Contacts.helper.adapter.dog.DogFragment
+import com.example.firstapp.ui.Contacts.helper.adapter.pets.cat.CatFragment
+import com.example.firstapp.ui.Contacts.helper.adapter.pets.dog.DogFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_pet.*
 
