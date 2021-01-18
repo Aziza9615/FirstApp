@@ -9,6 +9,25 @@
         android:id="@+id/name_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Hello"/>
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        tools:text="hellooooooo"/>
+
+    <TextView
+        android:id="@+id/phone_number_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginStart="@dimen/margin_16_dp"
+        android:layout_marginEnd="@dimen/margin_16_dp"
+        tools:text="999777222111"/>
+
+    <TextView
+        android:id="@+id/age_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16_dp"
+        tools:text="age: 25"/>
 
 </LinearLayout>
