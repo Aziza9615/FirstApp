@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/cat"
+    <item android:id="@+id/image"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/contact"/>
+        android:title="image"/>
 
-    <item android:id="@+id/dog"
+    <item android:id="@+id/image1"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/profile"/>
+        android:title="image"/>
 
-    <item android:id="@+id/favorite"
+    <item android:id="@+id/image2"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/favorite"/>
+        android:title="image"/>
 
 </menu>

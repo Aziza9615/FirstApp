@@ -8,7 +8,7 @@ import com.example.firstapp.R
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class MainAdapter(private val listener: ClickListener) : RecyclerView.Adapter<MainViewHolder>() {
-    
+
     private var items = mutableListOf<Contact>()
 
 
