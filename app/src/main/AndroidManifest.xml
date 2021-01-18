@@ -13,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.Contacts.helper.adapter.Favorite.Pets_Detail_Activity"></activity>
-        <activity android:name=".ui.Contacts.helper.adapter.cat.PetDetailActivity" />
-        <activity android:name=".ui.Contacts.MainActivity">
+        <activity android:name=".ui.Contacts.helper.adapter.SecondActivity"></activity>
+        <activity android:name=".ui.Contacts.MyProject.TempFragment" />
+        <activity android:name=".ui.Contacts.MyProject.HolerikFragment" />
+        <activity android:name=".ui.Contacts.MyProject.MainActivity2" />
+        <activity android:name=".ui.Contacts.helper.favorite.Pets_Detail_Activity" />
+        <activity android:name=".ui.Contacts.helper.cat.PetDetailActivity" />
+        <activity android:name=".ui.Contacts.helper.adapter.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

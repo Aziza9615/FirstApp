@@ -2,4 +2,5 @@
 <resources>
     <item name="pets" type="id" />
     <item name="profile" type="id" />
+<!--    <item name="temps" type="id">темперамент</item>-->
 </resources>

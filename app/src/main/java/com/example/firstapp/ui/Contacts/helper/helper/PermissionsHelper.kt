@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper.helper
 
 import android.app.Activity
 import android.content.pm.PackageManager
@@ -10,6 +10,8 @@ private const val PERMISSION_REQUEST_CODE = 100
 fun checkPermissions(activity: Activity, permission: String, action: () -> Unit) {
     if (ContextCompat.checkSelfPermission(activity, permission)
         !=PackageManager.PERMISSION_GRANTED)
-        ActivityCompat.requestPermissions(activity, arrayOf(permission), PERMISSION_REQUEST_CODE)
+        ActivityCompat.requestPermissions(activity, arrayOf(permission),
+            PERMISSION_REQUEST_CODE
+        )
     else action()
 }
