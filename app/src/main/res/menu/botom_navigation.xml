@@ -3,14 +3,14 @@
 
     <item android:id="@+id/image"
         android:icon="@drawable/ic_favorite"
-        android:title="image1"/>
+        android:title="Публикации"/>
 
     <item android:id="@+id/image1"
-        android:icon="@drawable/ic_favorite"
-        android:title="image2"/>
+        android:icon="@drawable/ic_bookmark"
+        android:title="Избранно"/>
 
     <item android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
-        android:title="@string/profile"/>
+        android:title="Профиль"/>
 
 </menu>
