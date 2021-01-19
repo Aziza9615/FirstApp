@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper.image
 
 
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.firstapp.R
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_image_carousel.*
 
 class ImageCarouselFragment(private val imageUrl: String) : Fragment() {
@@ -22,8 +22,7 @@ class ImageCarouselFragment(private val imageUrl: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        Glide.with(this).load(imageUrl).into(image_iv)
+        Glide.with(requireContext()).load(imageUrl).into(image_iv)
 
-        Picasso.get().load(imageUrl).into(image_iv)
     }
 }

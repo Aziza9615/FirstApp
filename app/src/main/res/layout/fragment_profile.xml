@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/images"
+        android:layout_width="150dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="@dimen/text_size_18_sp"
+        android:layout_marginLeft="@dimen/text_size_18_sp"
+        android:layout_marginTop="@dimen/text_size_18_sp"
+        android:src="@drawable/ic_dizlike"
+        app:civ_circle_background_color="@color/colorHeader_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="228dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:text="Aziza"
+        android:textSize="25sp"
+        android:textColor="@color/colorHeader_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/images_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/des"
+        android:layout_width="228dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="60dp"
+        android:text="Привет всем меня зовут Азиза и мне 24))"
+        android:textSize="@dimen/text_size_20_sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/colorHeader_text"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="172dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Подписаться"
+        android:textStyle="bold"
+        android:textColor="@color/colorHeader_text"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

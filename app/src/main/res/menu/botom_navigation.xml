@@ -3,14 +3,14 @@
 
     <item android:id="@+id/image"
         android:icon="@drawable/ic_favorite"
-        android:title="image"/>
+        android:title="image1"/>
 
     <item android:id="@+id/image1"
         android:icon="@drawable/ic_favorite"
-        android:title="image"/>
+        android:title="image2"/>
 
-    <item android:id="@+id/image2"
-        android:icon="@drawable/ic_favorite"
-        android:title="image"/>
+    <item android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile"/>
 
 </menu>
