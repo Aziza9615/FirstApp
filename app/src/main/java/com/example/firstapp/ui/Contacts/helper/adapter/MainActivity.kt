@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
             view_pager.adapter = adapter
             view_pager.isUserInputEnabled = false;
 
-            supportFragmentManager
-                .beginTransaction().add(R.id.container, ProfileFragment())
-                .addToBackStack("asd")
-                .commit()
+//            supportFragmentManager
+//                .beginTransaction().add(R.id.container, ProfileFragment())
+//                .addToBackStack("asd")
+//                .commit()
         }
 
 

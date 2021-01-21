@@ -11,7 +11,6 @@ data class Publication (
 val imageArray = mutableListOf<String>().apply {
     add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBQQlFefFKc0MgAocMwl9XZKou32VgeBqf_Q&usqp=CAU")
     add("https://resheto.net/images/mater/pozitivnye_kartinki_2.jpg")
-    add("https://lh3.googleusercontent.com/proxy/oDBFBkA6R9exqIj3mLrwu6erR3GxUQMLJjNSXDShqlkGl9Jly3O8Py2U5DEM2nqIkd0lN2Rhm4Th7F0SZreg5JNrPqq_hOB4UqP3FCXT6IkwkzQK9z4jE6uFiVAmij1mdpreDuBp")
     add("https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg")
     add("https://www.meme-arsenal.com/memes/50569ac974c29121ff9075e45a334942.jpg")
     add("https://bipbap.ru/wp-content/uploads/2017/08/LEpwl8j7fQ.jpg")
