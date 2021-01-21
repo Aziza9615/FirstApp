@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/image"
-        android:icon="@drawable/ic_favorite"
+        android:icon="@drawable/ic_public"
         android:title="Публикации"/>
 
-    <item android:id="@+id/image1"
-        android:icon="@drawable/ic_bookmark"
+    <item android:id="@+id/unFavorite"
+        android:icon="@drawable/ic_favorite"
         android:title="Избранное"/>
 
     <item android:id="@+id/profile"

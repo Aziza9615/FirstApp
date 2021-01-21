@@ -12,7 +12,7 @@
         android:layout_marginStart="@dimen/text_size_18_sp"
         android:layout_marginLeft="@dimen/text_size_18_sp"
         android:layout_marginTop="@dimen/text_size_18_sp"
-        android:src="@drawable/ic_dizlike"
+        android:src="@drawable/ic_unfavorite"
         app:civ_circle_background_color="@color/colorHeader_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

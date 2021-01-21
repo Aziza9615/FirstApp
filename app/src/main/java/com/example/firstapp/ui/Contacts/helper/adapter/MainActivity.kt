@@ -3,6 +3,7 @@ package com.example.firstapp.ui.Contacts.helper.adapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firstapp.R
+import com.example.firstapp.ui.Contacts.helper.favorites.FavoriteFragment
 import com.example.firstapp.ui.Contacts.helper.publication.PublicationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,17 +20,23 @@ class MainActivity : AppCompatActivity() {
         private fun setupViewPager() {
             adapter = MainViewPagerAdapter(this)
             adapter.addFragment(PublicationFragment())
-            adapter.addFragment(PublicationFragment())
+            adapter.addFragment(FavoriteFragment())
             adapter.addFragment(ProfileFragment())
             view_pager.adapter = adapter
             view_pager.isUserInputEnabled = false;
+
+            supportFragmentManager
+                .beginTransaction().add(R.id.container, ProfileFragment())
+                .addToBackStack("asd")
+                .commit()
         }
+
 
         private fun setupBottomNavigationView() {
             bottom_navigation.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.image -> changeCurrentItem(0)
-                    R.id.image1 -> changeCurrentItem(1)
+                    R.id.favorite -> changeCurrentItem(1)
                     R.id.profile  -> changeCurrentItem(2)
                 }
                 true
@@ -40,6 +47,10 @@ class MainActivity : AppCompatActivity() {
             view_pager.setCurrentItem(position, false)
     }
 }
+                //ИНТЕНТ ПЕРЕДАЕТ ИЗ ОДНОГО АКТИВИТИ ВО ВТОРУЮ
+                 //val intent = Intent(this, MainActivity::class.java)
+                //        intent.putExtra("name", "It academy")
+               //startActivity(intent)
 
 
 

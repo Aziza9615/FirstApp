@@ -2,5 +2,7 @@
 <resources>
     <item name="pets" type="id" />
     <item name="profile" type="id" />
-<!--    <item name="temps" type="id">темперамент</item>-->
+    <item name="favorite" type="id" />
+    <!--    <item name="favorite" type="id">Избранное</item>-->
+    <!--    <item name="temps" type="id">темперамент</item>-->
 </resources>

@@ -23,4 +23,6 @@
     <string name="pets">Pets</string>
     <string name="save">Сохранить</string>
     <string name="favorite">favorite</string>
+    <string name="publick">Публикации</string>
+
 </resources>

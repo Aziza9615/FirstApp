@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/icon_civ"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@color/colorAccent"
+        android:src="@color/colorPrimaryDark"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/margin_8_dp"/>
-
+        android:layout_marginTop="8dp"/>
+    
     <TextView
-        android:id="@+id/name_tv"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:lines="1"
@@ -28,16 +27,49 @@
         app:layout_constraintBottom_toBottomOf="@+id/icon_civ"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginEnd="@dimen/margin_8_dp"
-        tools:text="hi"/>
+        tools:text="helllloo"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/images_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_16_dp"
+        android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_civ"
-        android:layout_marginTop="@dimen/margin_16_dp"/>
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:minHeight="200dp"
+        android:maxHeight="250dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/favorite_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/images_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:background="@drawable/ic_unfavorite"
+        android:layout_marginLeft="@dimen/margin_8_dp"/>
+
+    <ImageButton
+        android:id="@+id/comment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/favorite_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
+        android:background="@drawable/ic_comment"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        android:layout_marginLeft="@dimen/margin_8_dp"/>
+
+    <ImageButton
+        android:id="@+id/direct_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/comment_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
+        android:background="@drawable/ic_direct"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        android:layout_marginLeft="@dimen/margin_8_dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_image, container, false)
+        return inflater.inflate(R.layout.fragment_image,  false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,8 +37,19 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
         adapter.addItems(publicationArray)
     }
 
-    override fun onItemClick(item: Publication) {
-
+    override fun onFavoriteClick(item: Publication, position: Int) {
+        publicationArray.forEach {
+            if (it == item) it.isFavorite = !it.isFavorite
+        }
+        adapter.updateItem(position)
     }
 
+    override fun onCommentClick(item: Publication) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDirectClick(item: Publication) {
+        TODO("Not yet implemented")
+    }
 }
+
