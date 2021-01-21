@@ -19,17 +19,16 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="228dp"
-        android:layout_height="31dp"
+        android:layout_width="214dp"
+        android:layout_height="34dp"
         android:layout_marginTop="16dp"
         android:text="Aziza"
-        android:textSize="25sp"
         android:textColor="@color/colorHeader_text"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/images_rv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="@+id/des"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/des"
@@ -40,6 +39,7 @@
         android:layout_marginTop="60dp"
         android:text="Привет всем меня зовут Азиза и мне 24))"
         android:textSize="@dimen/text_size_20_sp"
+        app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/colorHeader_text"/>

@@ -7,7 +7,7 @@
 
     <item android:id="@+id/image1"
         android:icon="@drawable/ic_bookmark"
-        android:title="Избранно"/>
+        android:title="Избранное"/>
 
     <item android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
