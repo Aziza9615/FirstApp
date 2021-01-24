@@ -20,9 +20,16 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
         )
     }
 
+//    override fun onResume() {
+//        super.onResume()
+//        adapter.addItems
+//    }
+
+
     override fun getItemCount(): Int {
         return items.count()
     }
+
 
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
@@ -47,12 +54,27 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
         notifyItemChanged(position)
     }
 
+    fun removeItem(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemChanged(position, items)
+    }
+
+    fun restoreItem(position: Int, item: Publication) {
+        items.add(position, item)
+        notifyItemInserted(position)
+        notifyItemRangeChanged(position, items.size)
+    }
+
+
     interface ClickListener {
         fun onFavoriteClick(item: Publication, position: Int)
         fun onCommentClick(item: Publication)
         fun onDirectClick(item: Publication)
+        fun updateItem()
     }
 }
+
 
 class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -73,5 +95,6 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         itemView.images_rv.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
         itemView.images_rv.adapter = adapter
         adapter.addItems(items)
+        // тут надо связать 
     }
 }

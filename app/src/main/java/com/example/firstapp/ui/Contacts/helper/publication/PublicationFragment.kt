@@ -21,6 +21,11 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
         return inflater.inflate(R.layout.fragment_image, container, false)
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateItem()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
@@ -50,6 +55,10 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onDirectClick(item: Publication) {
         TODO("Not yet implemented")
+    }
+
+    override fun updateItem() {
+        adapter.addItems(publicationArray)
     }
 }
 
