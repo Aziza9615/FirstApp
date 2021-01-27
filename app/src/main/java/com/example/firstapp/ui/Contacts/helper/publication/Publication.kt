@@ -1,12 +1,17 @@
 package com.example.firstapp.ui.Contacts.helper.publication
 
-data class Publication (
+import java.io.Serializable
+
+data class Publication(
+    var id: Int,
+    var icon: String,
     var name: String,
     var phoneNumber: String,
     var age: Int,
     var image: MutableList<String>,
+    val randomImage: String,
     var isFavorite: Boolean = false
-)
+): Serializable
 
 val imageArray = mutableListOf<String>().apply {
     add("https://www.meme-arsenal.com/memes/50569ac974c29121ff9075e45a334942.jpg")
@@ -17,53 +22,12 @@ val imageArray = mutableListOf<String>().apply {
 }
 
 val publicationArray = mutableListOf<Publication>().apply {
-    add(Publication("John", "999777222107", 30, imageArray))
-    add(
-        Publication(
-            "Sara",
-            "999777222111",
-            35,
-            imageArray
-        )
-    )
-    add(
-        Publication(
-            "Andry",
-            "999777555333",
-            29,
-            imageArray
-        )
-    )
-    add(
-        Publication(
-            "German",
-            "999777555112",
-            40,
-            imageArray
-        )
-    )
-    add(
-        Publication(
-            "Klara",
-            "999777234198",
-            25,
-            imageArray
-        )
-    )
-    add(
-        Publication(
-            "Anna",
-            "999777222111",
-            40,
-            imageArray
-        )
-    )
-    add(
-        Publication(
-            "Jinny",
-            "999777242106",
-            83,
-            imageArray
-        )
-    )
+    add(Publication(1,"https://klike.net/uploads/posts/2018-06/1530090978_1.jpg","Elisa", "999777222107", 30, imageArray, imageArray.random()))
+    add(Publication(2,"https://ribalych.ru/wp-content/uploads/2020/03/smeshnye-kartinki-nastroenie_001-1.jpg","Jenny", "999777222111", 35, imageArray, imageArray.random()))
+    add(Publication(3,"https://the-flow.ru/uploads/images/resize/830x0/adaptiveResize/15/77/94/35/48/bb23aed40cd7.jpg","Andry", "999777555333", 29, imageArray, imageArray.random()))
+    add(Publication(4, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRmXKAUMbEtzmIr9CdybO3TAYkMP8bcbBvPg&usqp=CAU","Leila", "999777555112", 40, imageArray, imageArray.random()))
+    add(Publication(5,"https://lh3.googleusercontent.com/proxy/-ZufMQfaLpO7w5oMKcBEF3TO8_nd4k4RfyXzwSLbUF7_36_WTxrJbAiW2Lm-Q8e09BABf_-VJ0yK3Z7fTJ9FwCZnh5s", "Andy","6475773747",25, imageArray, imageArray.random()))
+    add(Publication(6,"https://www.prikol.ru/wp-content/uploads/2020/07/kartinki-29072020-001.jpg","Anabel", "999777222111", 40, imageArray, imageArray.random()))
+    add(Publication(7,"https://chto-takoe-lyubov.net/wp-content/uploads/2020/10/Davay-pomirimsya-lyubimaya.jpg","Keisy", "999777242106", 83, imageArray, imageArray.random()))
+
 }

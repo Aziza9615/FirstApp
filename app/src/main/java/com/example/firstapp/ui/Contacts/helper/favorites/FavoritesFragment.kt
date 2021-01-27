@@ -22,6 +22,7 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
@@ -45,8 +46,11 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
+        publicationArray.forEach {
+            if (it == item) it.isFavorite = !it.isFavorite
+        }
+        adapter.removeItem(position)
     }
-
 
     override fun onCommentClick(item: Publication) {
         TODO("Not yet implemented")
@@ -55,10 +59,5 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
     override fun onDirectClick(item: Publication) {
         TODO("Not yet implemented")
     }
-
-    override fun updateItem() {
-        TODO("Not yet implemented")
-    }
-
 }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/gray_bgr">
 
     <item android:id="@+id/image"
         android:icon="@drawable/ic_public"
-        android:title="Публикации"/>
+        android:title="Публикации" />
 
     <item android:id="@+id/unFavorite"
         android:icon="@drawable/ic_favorite"

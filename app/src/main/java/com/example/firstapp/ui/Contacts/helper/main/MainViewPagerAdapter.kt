@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.adapter
+package com.example.firstapp.ui.Contacts.helper.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

@@ -21,44 +21,52 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
         return inflater.inflate(R.layout.fragment_image, container, false)
     }
 
-    override fun onResume() {
-        super.onResume()
-        updateItem()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
-        adapter =
-            PublicationAdapter(
-                this,
-                requireActivity()
-            )
+        adapter = PublicationAdapter(this, requireActivity())
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
         adapter.addItems(publicationArray)
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
         publicationArray.forEach {
-            if (it == item) it.isFavorite = !it.isFavorite
+            if (it == item) {
+                it.isFavorite = !it.isFavorite
+            }
         }
-        adapter.updateItem(position)
     }
 
     override fun onCommentClick(item: Publication) {
-        TODO("Not yet implemented")
     }
 
     override fun onDirectClick(item: Publication) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateItem() {
-        adapter.addItems(publicationArray)
     }
 }
+
+//    var i = 0
+//    //Сработает хотя бы 1 раз
+//    do {
+//        Log.v("DO_WHILE", "COUNT IS $i")
+//    } while (i == 0)
+//
+//    //Сработает ровное количество раз
+//    while (i < 3) {
+//        Log.v("WHILE", "COUNT IS $i")
+//    }
+//
+//    //Сработает ровное количество раз
+//    for (i in 1..3) {
+//        Log.v("FOR", "COUNT IS $i")
+//    }
+//}
+
 
