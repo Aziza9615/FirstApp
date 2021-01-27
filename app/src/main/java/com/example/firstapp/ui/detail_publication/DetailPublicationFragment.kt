@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.main
+package com.example.firstapp.ui.detail_publication
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
-import com.example.firstapp.ui.Contacts.helper.publication.Publication
+import com.example.firstapp.model.Publication
 import kotlinx.android.synthetic.main.fragment_detail_publication.*
 
 class DetailPublicationFragment : Fragment() {

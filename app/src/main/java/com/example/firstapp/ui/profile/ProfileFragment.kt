@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.profile
+package com.example.firstapp.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
-import com.example.firstapp.ui.Contacts.helper.main.DetailPublicationFragment
-import com.example.firstapp.ui.Contacts.helper.publication.Publication
-import com.example.firstapp.ui.Contacts.helper.publication.publicationArray
+import com.example.firstapp.ui.detail_publication.DetailPublicationFragment
+import com.example.firstapp.model.Publication
+import com.example.firstapp.model.publicationArray
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment(), ProfileAdapter. ClickListener {
@@ -45,7 +45,8 @@ class ProfileFragment : Fragment(), ProfileAdapter. ClickListener {
     private fun userPublications(): MutableList<Publication> = publicationArray.filter { it.id == 7 } as MutableList<Publication>
 
     override fun onItemClick(item: Publication) {
-        val fragment = DetailPublicationFragment()
+        val fragment =
+            DetailPublicationFragment()
         val bundle = Bundle()
         bundle.putSerializable("publication", item)
         fragment.arguments = bundle

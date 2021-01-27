@@ -1,11 +1,11 @@
-package com.example.firstapp.ui.Contacts.helper.main
+package com.example.firstapp.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firstapp.R
-import com.example.firstapp.ui.Contacts.helper.favorites.FavoriteFragment
-import com.example.firstapp.ui.Contacts.helper.profile.ProfileFragment
-import com.example.firstapp.ui.Contacts.helper.publication.PublicationFragment
+import com.example.firstapp.ui.favorites.FavoriteFragment
+import com.example.firstapp.ui.profile.ProfileFragment
+import com.example.firstapp.ui.publication.PublicationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(FavoriteFragment())
         adapter.addFragment(ProfileFragment())
         view_pager.adapter = adapter
+        view_pager.offscreenPageLimit = 3
+        view_pager.isEnabled = false
         view_pager.isUserInputEnabled = false;
     }
 

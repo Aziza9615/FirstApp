@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_public"
         android:title="Публикации" />
 
-    <item android:id="@+id/unFavorite"
+    <item android:id="@+id/favorite"
         android:icon="@drawable/ic_favorite"
         android:title="Избранное"/>
 

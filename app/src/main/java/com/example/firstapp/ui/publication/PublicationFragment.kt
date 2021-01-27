@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.publication
+package com.example.firstapp.ui.publication
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
+import com.example.firstapp.model.Publication
+import com.example.firstapp.model.publicationArray
 import kotlinx.android.synthetic.main.fragment_image.*
 
 
-class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
+class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
 
     lateinit var adapter: PublicationAdapter
     override fun onCreateView(
@@ -41,8 +43,14 @@ class PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
         publicationArray.forEach {
             if (it == item) {
                 it.isFavorite = !it.isFavorite
+                if (it.isFavorite) it.like += 1
+                else it.like -= 1
+                adapter.updateItem(position)
             }
         }
+
+//        it.like += 1
+//        it.like -= 1
     }
 
     override fun onCommentClick(item: Publication) {

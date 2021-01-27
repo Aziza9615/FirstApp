@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.favorites
+package com.example.firstapp.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
-import com.example.firstapp.ui.Contacts.helper.publication.Publication
-import com.example.firstapp.ui.Contacts.helper.publication.PublicationAdapter
-import com.example.firstapp.ui.Contacts.helper.publication.publicationArray
-import kotlinx.android.synthetic.main.fragment_image.*
+import com.example.firstapp.model.Publication
+import com.example.firstapp.ui.publication.PublicationAdapter
+import com.example.firstapp.model.publicationArray
+import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
 
@@ -22,18 +22,17 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }
 
+    private fun setupRecyclerView() {
+        adapter = PublicationAdapter(this, requireActivity())
+        rv_fav.layoutManager = LinearLayoutManager(requireContext())
+        rv_fav.adapter = adapter
+//        val snapHelper = LinearSnapHelper()
+//        snapHelper.attachToRecyclerView(rv)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-    }
-
-    private fun setupRecyclerView() {
-        adapter = PublicationAdapter(this, requireActivity())
-        rv.layoutManager = LinearLayoutManager(requireContext())
-        rv.adapter = adapter
-//        val snapHelper = LinearSnapHelper()
-//        snapHelper.attachToRecyclerView(rv)
     }
 
     override fun onResume() {

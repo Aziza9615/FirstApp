@@ -52,13 +52,25 @@
         app:layout_constraintTop_toBottomOf="@+id/images_rv"
         android:layout_marginTop="@dimen/margin_8_dp"/>
 
+    <TextView
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/favorites_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorites_btn"
+        android:layout_marginStart="@dimen/margin_8_dp"
+        tools:text="100"
+        android:layout_marginLeft="@dimen/margin_8_dp"
+        android:textSize="@dimen/margin_16_dp"/>
+
     <ImageView
         android:id="@+id/favorites_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_unfavorite"
         app:layout_constraintTop_toBottomOf="@+id/rvs_pi"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/like"
         android:layout_marginTop="@dimen/margin_8_dp"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginLeft="@dimen/margin_8_dp" />

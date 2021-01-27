@@ -1,4 +1,4 @@
-package com.example.firstapp.ui.Contacts.helper.image
+package com.example.firstapp.ui.image
 
 import android.view.LayoutInflater
 import android.view.View
