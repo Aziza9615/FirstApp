@@ -32,7 +32,7 @@ val publicationArray = mutableListOf<Publication>().apply {
             30,
             imageArray,
             imageArray.random(),
-            0
+            365346
         )
     )
     add(
@@ -56,7 +56,7 @@ val publicationArray = mutableListOf<Publication>().apply {
             29,
             imageArray,
             imageArray.random(),
-            0
+            3555
         )
     )
     add(
@@ -68,7 +68,7 @@ val publicationArray = mutableListOf<Publication>().apply {
             40,
             imageArray,
             imageArray.random(),
-            0
+            65
         )
     )
     add(

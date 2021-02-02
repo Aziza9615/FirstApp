@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.model.Publication
 import com.example.firstapp.ui.image.ImagePublicationAdapter
+import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class PublicationAdapter(private val listener: ClickListener, private val activity: Activity) : RecyclerView.Adapter<PublicationViewHolder>() {
@@ -60,23 +61,21 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     fun bind(item: Publication, activity: Activity) {
         Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
         itemView.names_tv.text = item.name
-        itemView.like.text = "${ item.like }"
-        if (item.like == 0)itemView.like.visibility = View.GONE
+        itemView.like.text = "${item.like}"
+        if (item.like == 0) itemView.like.visibility = View.GONE
         else itemView.like.visibility = View.VISIBLE
         itemView.favorites_btn.setImageResource(getFavoriteIcon(item.isFavorite))
-        setupRecyclerView(item.image, activity)
+        setupImagesRecyclerView(item.image, itemView.images_rv, itemView.rvs_pi)
     }
 
-
-    private fun setupRecyclerView(items: MutableList<String>, activity: Activity) {
+    fun setupImagesRecyclerView(items: MutableList<String>, recyclerView: RecyclerView, pagerIndicator: IndefinitePagerIndicator) {
         val adapter = ImagePublicationAdapter()
         val snapHelper = PagerSnapHelper()
-        itemView.images_rv.apply {
-            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        recyclerView.apply { layoutManager = LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
             this.adapter = adapter
             this.onFlingListener = null
             snapHelper.attachToRecyclerView(this)
-            itemView.rvs_pi.attachToRecyclerView(this)
+            pagerIndicator.attachToRecyclerView(this)
         }
         adapter.addItems(items)
     }
