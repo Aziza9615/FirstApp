@@ -41,6 +41,5 @@ class DetailPublicationFragment : Fragment() {
         rvsPi: IndefinitePagerIndicator?
     ) {
 
-        
     }
 }
