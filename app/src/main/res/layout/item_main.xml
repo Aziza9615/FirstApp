@@ -19,7 +19,7 @@
         android:layout_marginLeft="@dimen/margin_8_dp" />
 
     <TextView
-        android:id="@+id/names_tv"
+        android:id="@+id/name_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:lines="1"
@@ -44,7 +44,7 @@
         android:maxHeight="250dp"/>
 
     <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
-        android:id="@+id/rvs_pi"
+        android:id="@+id/rv_pi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/images_rv"
@@ -57,40 +57,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/favorites_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/favorites_btn"
+        app:layout_constraintTop_toTopOf="@+id/favorite_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
         android:layout_marginStart="@dimen/margin_8_dp"
         tools:text="100"
         android:layout_marginLeft="@dimen/margin_8_dp"
         android:textSize="@dimen/margin_16_dp"/>
 
     <ImageView
-        android:id="@+id/favorites_btn"
+        android:id="@+id/favorite_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_unfavorite"
-        app:layout_constraintTop_toBottomOf="@+id/rvs_pi"
+        app:layout_constraintTop_toBottomOf="@+id/rv_pi"
         app:layout_constraintStart_toEndOf="@+id/count_of_favorite_tv"
         android:layout_marginTop="@dimen/margin_8_dp"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginLeft="@dimen/margin_8_dp" />
 
     <ImageButton
-        android:id="@+id/comments_btn"
+        android:id="@+id/comment_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/favorites_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/favorites_btn"
+        app:layout_constraintStart_toEndOf="@+id/favorite_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
         android:background="@drawable/ic_comment"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginLeft="@dimen/margin_8_dp" />
 
     <ImageButton
-        android:id="@+id/directs_btn"
+        android:id="@+id/direct_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/comments_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/favorites_btn"
+        app:layout_constraintStart_toEndOf="@+id/comment_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_btn"
         android:background="@drawable/ic_direct"
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginLeft="@dimen/margin_8_dp" />

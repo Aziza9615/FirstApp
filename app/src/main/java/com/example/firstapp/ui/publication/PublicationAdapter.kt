@@ -28,14 +28,14 @@ class PublicationAdapter(private val listener: ClickListener, private val activi
     override fun onBindViewHolder(holder: PublicationViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item, activity)
-        holder.itemView.favorites_btn.setOnClickListener {
+        holder.itemView.favorite_btn.setOnClickListener {
             listener.onFavoriteClick(item, position)
-            holder.itemView.favorites_btn.setImageResource(getFavoriteIcon(item.isFavorite))
+            holder.itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
         }
-        holder.itemView.comments_btn.setOnClickListener {
+        holder.itemView.comment_btn.setOnClickListener {
             listener.onCommentClick(item)
         }
-        holder.itemView.directs_btn.setOnClickListener {
+        holder.itemView.direct_btn.setOnClickListener {
             listener.onDirectClick(item)
         }
     }
@@ -61,12 +61,12 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
     fun bind(item: Publication, activity: Activity) {
         Glide.with(itemView.context).load(item.icon).into(itemView.icon_civ)
-        itemView.names_tv.text = item.name
+        itemView.name_tv.text = item.name
         itemView.count_of_favorite_tv.text = "${item.countOfFavorite}"
         if (item.countOfFavorite == 0) itemView.count_of_favorite_tv.visibility = View.GONE
         else itemView.count_of_favorite_tv.visibility = View.VISIBLE
-        itemView.favorites_btn.setImageResource(getFavoriteIcon(item.isFavorite))
-        setupImagesRecyclerView(item.images, itemView.images_rv, itemView.rvs_pi)
+        itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
+        setupImagesRecyclerView(item.images, itemView.images_rv, itemView.rv_pi)
     }
 }
 
