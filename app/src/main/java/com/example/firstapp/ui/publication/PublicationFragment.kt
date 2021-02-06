@@ -7,14 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
+import com.example.firstapp.helper.showToast
 import com.example.firstapp.model.Publication
-import com.example.firstapp.model.publicationArray
+import com.example.firstapp.ui.main.MainRepository
 import kotlinx.android.synthetic.main.fragment_image.*
 
+interface RequestResult {
+    fun onFailure(t: Throwable)
+    fun onSuccess(result: MutableList<Publication>)
+}
 
-class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
+class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, RequestResult {
 
     lateinit var adapter: PublicationAdapter
+
+    private var publicationArray: MutableList<Publication> = mutableListOf()
+    private lateinit var repository: MainRepository
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,15 +45,24 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter.addItems(publicationArray)
+        repository = MainRepository(this)
+        repository.fetchPublications()
+    }
+
+    override fun onFailure(t: Throwable) {
+        showToast(requireContext(),t.message.toString())
+    }
+
+    override fun onSuccess(result: MutableList<Publication>) {
+        adapter.addItems(result)
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
         publicationArray.forEach {
             if (it == item) {
                 it.isFavorite = !it.isFavorite
-                if (it.isFavorite) it.like += 1
-                else it.like -= 1
+                if (it.isFavorite) it.countOfFavorite += 1
+                else it.countOfFavorite -= 1
                 adapter.updateItem(position)
             }
         }

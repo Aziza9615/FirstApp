@@ -9,13 +9,18 @@ import com.example.firstapp.ui.publication.PublicationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var adapter: MainViewPagerAdapter
+    private lateinit var repository: MainRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViewPager()
         setupBottomNavigationView()
+        //showToast(this, repository.fetchTestData(this).toString())
     }
+
     private fun setupViewPager() {
         adapter = MainViewPagerAdapter(this)
         adapter.addFragment(PublicationFragment())
@@ -42,10 +47,6 @@ class MainActivity : AppCompatActivity() {
             view_pager.setCurrentItem(position, false)
     }
 }
-                //ИНТЕНТ ПЕРЕДАЕТ ИЗ ОДНОГО АКТИВИТИ ВО ВТОРУЮ
-                 //val intent = Intent(this, MainActivity::class.java)
-                //        intent.putExtra("name", "It academy")
-               //startActivity(intent)
 
 
 

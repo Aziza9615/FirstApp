@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
 import com.example.firstapp.R
-import com.example.firstapp.ui.detail_publication.DetailPublicationFragment
 import com.example.firstapp.model.Publication
-import com.example.firstapp.model.publicationArray
+import com.example.firstapp.ui.detail_publication.DetailPublicationFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment(), ProfileAdapter. ClickListener {
@@ -31,18 +29,17 @@ class ProfileFragment : Fragment(), ProfileAdapter. ClickListener {
         adapter = ProfileAdapter(this)
         rv.layoutManager = GridLayoutManager(requireContext(), COUNT_OF_GRID)
         rv.adapter = adapter
-        adapter.addItems(userPublications())
+        //adapter.addItems(userPublications())
     }
 
     private fun setupViews() {
-        val user = userPublications().last()
-        Glide.with(requireContext()).load(user.icon).into(images)
-        name.text = user.name
-        des.text = user.phoneNumber
+//        val user = userPublications().last()
+//        Glide.with(requireContext()).load(user.icon).into(images)
+//        name.text = user.name
+//        des.text = user.phoneNumber
     }
-    // из активити supportFragmentManager
-    // из фрагмента childFragmentManager
-    private fun userPublications(): MutableList<Publication> = publicationArray.filter { it.id == 7 } as MutableList<Publication>
+
+    //private fun userPublications(): MutableList<Publication> = publicationArray.filter { it.id == 7 } as MutableList<Publication>
 
     override fun onItemClick(item: Publication) {
         val fragment =
@@ -53,3 +50,6 @@ class ProfileFragment : Fragment(), ProfileAdapter. ClickListener {
         activity?.supportFragmentManager?.beginTransaction()?.add(R.id.main, fragment)?.addToBackStack(fragment.tag)?.commit()
     }
 }
+
+// из активити supportFragmentManager
+// из фрагмента childFragmentManager

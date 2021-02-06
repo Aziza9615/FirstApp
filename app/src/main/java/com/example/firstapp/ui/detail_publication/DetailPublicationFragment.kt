@@ -8,13 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
+import com.example.firstapp.model.Images
 import com.example.firstapp.model.Publication
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.fragment_detail_publication.*
-import kotlinx.android.synthetic.main.fragment_detail_publication.icon_civ
-import kotlinx.android.synthetic.main.fragment_detail_publication.images_rv
-import kotlinx.android.synthetic.main.fragment_detail_publication.like
-import kotlinx.android.synthetic.main.item_main.*
 
 class DetailPublicationFragment : Fragment() {
 
@@ -31,12 +28,12 @@ class DetailPublicationFragment : Fragment() {
 
         Glide.with(requireContext()).load(data.icon).into(icon_civ)
         name_tv.text = data.name
-        like.text = "${data.like}"
-        setupImagesRecyclerView(data.image, images_rv, rvs_pi)
+        count_of_favorite_tv.text = "${data.countOfFavorite}"
+        setupImagesRecyclerView(data.images, images_rv, rv_pi)
     }
 
     private fun setupImagesRecyclerView(
-        image: MutableList<String>,
+        image: MutableList<Images>,
         imagesRv: RecyclerView?,
         rvsPi: IndefinitePagerIndicator?
     ) {

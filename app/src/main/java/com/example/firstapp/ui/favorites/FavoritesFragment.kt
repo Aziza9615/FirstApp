@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.R
 import com.example.firstapp.model.Publication
 import com.example.firstapp.ui.publication.PublicationAdapter
-import com.example.firstapp.model.publicationArray
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
@@ -37,18 +36,18 @@ class FavoriteFragment : Fragment(), PublicationAdapter.ClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter.addItems(getFavoritesPublications())
+        //adapter.addItems(getFavoritesPublications())
     }
 
-    private fun getFavoritesPublications(): MutableList<Publication> {
-        return publicationArray.filter { it.isFavorite } as MutableList<Publication>
-    }
+//    private fun getFavoritesPublications(): MutableList<Publication> {
+//        return publicationArray.filter { it.isFavorite } as MutableList<Publication>
+//    }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
-        publicationArray.forEach {
-            if (it == item) it.isFavorite = !it.isFavorite
-        }
-        adapter.removeItem(position)
+//        publicationArray.forEach {
+//            if (it == item) it.isFavorite = !it.isFavorite
+//        }
+//        adapter.removeItem(position)
     }
 
     override fun onCommentClick(item: Publication) {

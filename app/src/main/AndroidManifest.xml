@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.firstapp.ui.main.MainActivity"/>
-        <activity android:name="com.example.firstapp.ui.main.newActivity">
+        <activity android:name="com.example.firstapp.ui.main.MainRepository">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

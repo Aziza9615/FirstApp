@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.firstapp.R
+import com.example.firstapp.model.Images
 import kotlinx.android.synthetic.main.fragment_image_carousel.view.*
 
 class ImagePublicationAdapter() : RecyclerView.Adapter<ImagePublicationViewHolder>() {
 
-    private var urls = mutableListOf<String>()
+    private var urls = mutableListOf<Images>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagePublicationViewHolder {
         return ImagePublicationViewHolder(
@@ -28,15 +29,14 @@ class ImagePublicationAdapter() : RecyclerView.Adapter<ImagePublicationViewHolde
 
     }
 
-    fun addItems(items: MutableList<String>) {
+    fun addItems(items: MutableList<Images>) {
         urls = items
         notifyDataSetChanged()
     }
-
 }
 
 class ImagePublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(url: String) {
-        Glide.with(itemView.image_iv.context).load(url).into(itemView.image_iv)
+    fun bind(data: Images) {
+        Glide.with(itemView.image_iv.context).load(data.url).into(itemView.image_iv)
     }
 }
