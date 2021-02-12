@@ -95,4 +95,14 @@
         android:layout_marginStart="@dimen/margin_8_dp"
         android:layout_marginLeft="@dimen/margin_8_dp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comments_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favorite_btn"
+        android:layout_marginTop="@dimen/margin_8_dp"
+        android:maxHeight="150dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

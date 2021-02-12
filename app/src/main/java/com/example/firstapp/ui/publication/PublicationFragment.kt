@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_image.*
 
 interface RequestResult {
     fun onFailure(t: Throwable)
-    fun onSuccess(result: MutableList<Publication>)
+    fun <T>onSuccess(result: T)
 }
 
 class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, RequestResult {
@@ -53,8 +53,9 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Requ
         showToast(requireContext(),t.message.toString())
     }
 
-    override fun onSuccess(result: MutableList<Publication>) {
-        adapter.addItems(result)
+    override fun <T>onSuccess(result: T) {
+        publicationArray = result as MutableList<Publication>
+        adapter.addItems(publicationArray)
     }
 
     override fun onFavoriteClick(item: Publication, position: Int) {
@@ -66,9 +67,6 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Requ
                 adapter.updateItem(position)
             }
         }
-
-//        it.like += 1
-//        it.like -= 1
     }
 
     override fun onCommentClick(item: Publication) {
@@ -77,22 +75,4 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Requ
     override fun onDirectClick(item: Publication) {
     }
 }
-
-//    var i = 0
-//    //Сработает хотя бы 1 раз
-//    do {
-//        Log.v("DO_WHILE", "COUNT IS $i")
-//    } while (i == 0)
-//
-//    //Сработает ровное количество раз
-//    while (i < 3) {
-//        Log.v("WHILE", "COUNT IS $i")
-//    }
-//
-//    //Сработает ровное количество раз
-//    for (i in 1..3) {
-//        Log.v("FOR", "COUNT IS $i")
-//    }
-//}
-
 

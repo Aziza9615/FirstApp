@@ -5,8 +5,11 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface SimpleApi {
-    @GET("raw/feddd59ced26e92850a45d5e048ec5c3b277e098/Publication.json")
+    @GET("/Sirius1888/6551973ba9c39ba44adadfef166e7cb5/raw/aecf079d3f312456be5cce39adeef9fb38013972/Publication.json")
     fun fetchPublications(): Call<MutableList<Publication>>
+
+    @GET("/Sirius1888/6551973ba9c39ba44adadfef166e7cb5/raw/aecf079d3f312456be5cce39adeef9fb38013972/Publication.json")
+    fun fetchProfile(): Call<Publication>
 }
 
 //    baseUrl = https://lovetest.me

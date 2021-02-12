@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.firstapp.R
 import com.example.firstapp.model.Images
 import com.example.firstapp.model.Publication
+import com.example.firstapp.ui.publication.setupImagesRecyclerView
 import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
 import kotlinx.android.synthetic.main.fragment_detail_publication.*
 

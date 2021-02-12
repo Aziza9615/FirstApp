@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupViewPager()
         setupBottomNavigationView()
-        //showToast(this, repository.fetchTestData(this).toString())
     }
 
     private fun setupViewPager() {
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         view_pager.adapter = adapter
         view_pager.offscreenPageLimit = 3
         view_pager.isEnabled = false
-        view_pager.isUserInputEnabled = false;
+        view_pager.isUserInputEnabled = false
     }
 
         private fun setupBottomNavigationView() {
