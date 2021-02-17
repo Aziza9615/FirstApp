@@ -76,10 +76,6 @@ class PublicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         else itemView.count_of_favorite_tv.visibility = View.VISIBLE
         itemView.favorite_btn.setImageResource(getFavoriteIcon(item.isFavorite))
         setupImagesRecyclerView(item.images, itemView.images_rv, itemView.rv_pi)
-        itemView.count_of_comment_tv.text = "${item.countOfComment}"
-        if (item.countOfComment == 0) itemView.count_of_comment_tv.visibility = View.GONE
-        else itemView.count_of_comment_tv.visibility = View.VISIBLE
-        itemView.comment_btn.setImageResource(getCommentIcon(item.isComment))
         setupCommentsRecyclerView(item.comments, itemView.comments_rv)
     }
 
@@ -114,11 +110,6 @@ fun setupImagesRecyclerView(items: MutableList<Images>?, recyclerView: RecyclerV
 private fun getFavoriteIcon(state: Boolean): Int {
     return if (state) R.drawable.ic_favorite
     else R.drawable.ic_unfavorite
-}
-
-private fun getCommentIcon(state: Boolean): Int {
-    return if (state) R.drawable.ic_direct
-    else R.drawable.ic_comment
 }
 
  //View.VISIBLE = ОТОБРАЖАЕТСЯ
