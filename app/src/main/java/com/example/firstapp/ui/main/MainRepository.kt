@@ -1,5 +1,6 @@
 package com.example.firstapp.ui.main
 
+import com.example.firstapp.data.App.Companion.getDatabase
 import com.example.firstapp.model.Publication
 import com.example.firstapp.network.RetrofitClient
 import com.example.firstapp.ui.publication.RequestResult
@@ -12,6 +13,7 @@ class MainRepository(private val callback: RequestResult) {
     private var api = RetrofitClient().simpleApi
 
     fun fetchPublications() {
+        callback.onSuccess(getDatabase(). instagramDao(). getPublications())
         api.fetchPublications().enqueue(object : Callback<MutableList<Publication>> {
             override fun onFailure(call: Call<MutableList<Publication>>, t: Throwable) {
                 return callback.onFailure(t)
@@ -21,8 +23,13 @@ class MainRepository(private val callback: RequestResult) {
                 call: Call<MutableList<Publication>>,
                 response: Response<MutableList<Publication>>
             ) {
-                return if (response.body() != null) callback.onSuccess(response.body()!!)
-                else callback.onFailure(Throwable("error"))
+                return if (response.body() != null) {
+                    val data = response.body()
+                    getDatabase().instagramDao().getPublications()
+                    callback.onSuccess(data)
+                } else {
+                    callback.onFailure(Throwable("error"))
+                }
             }
         })
     }
