@@ -12,8 +12,10 @@ class MainRepository(private val callback: RequestResult) {
 
     private var api = RetrofitClient().simpleApi
 
+    private val database = getDatabase().instagramDao()
+
     fun fetchPublications() {
-        callback.onSuccess(getDatabase(). instagramDao(). getPublications())
+        callback.onSuccess(database.fetchPublications())
         api.fetchPublications().enqueue(object : Callback<MutableList<Publication>> {
             override fun onFailure(call: Call<MutableList<Publication>>, t: Throwable) {
                 return callback.onFailure(t)
@@ -25,7 +27,7 @@ class MainRepository(private val callback: RequestResult) {
             ) {
                 return if (response.body() != null) {
                     val data = response.body()
-                    getDatabase().instagramDao().getPublications()
+                    database.InsertPublications(data)
                     callback.onSuccess(data)
                 } else {
                     callback.onFailure(Throwable("error"))
@@ -46,14 +48,12 @@ class MainRepository(private val callback: RequestResult) {
             }
         })
     }
+
+    fun fetchFavoritePublications() {
+        callback.onSuccess(database.fetchFavoritePublications())
+    }
+
+    fun updateChangeFavoriteState(data: Publication) {
+        database.updateChangeFavoriteState(data)
+    }
 }
-
-//CRUD - CREATE, READ, UPDATE, DELETE
-//POST GET PUT DELETE
-
-//Процесс, поток
-//Ассинхронный, синхронный
-//coroutine - LiveData/Flow, rxJava - Single/Observer
-
-//Способы передачи данных между сервером и клиентом
-//json, XML, YAML

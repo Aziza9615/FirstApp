@@ -22,7 +22,7 @@ data class Publication(
     val randomImage: String? = null,
     val comments: MutableList<Comment>? = null,
     var isComment: Boolean = false,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = true
 ): Serializable
 
 data class Images(

@@ -38,15 +38,15 @@ class MainActivity : AppCompatActivity() {
         private fun setupBottomNavigationView() {
             bottom_navigation.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.image -> changeCurrentItem(0)
-                    R.id.favorite -> changeCurrentItem(1)
-                    R.id.profile  -> changeCurrentItem(2)
+                    R.id.image -> changeCurrentFragment(0)
+                    R.id.favorite -> changeCurrentFragment(1)
+                    R.id.profile -> changeCurrentFragment(2)
                 }
                 true
             }
         }
 
-        private fun changeCurrentItem(position: Int) {
+        private fun changeCurrentFragment(position: Int) {
             view_pager.setCurrentItem(position, false)
     }
 }

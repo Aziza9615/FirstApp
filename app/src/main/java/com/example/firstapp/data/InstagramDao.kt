@@ -1,9 +1,6 @@
 package com.example.firstapp.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.firstapp.model.Publication
 
 @Dao
@@ -12,5 +9,16 @@ interface InstagramDao {
     fun InsertPublications(data: List<Publication>?)
 
     @Query("SELECT * FROM publications")
-    fun getPublications(): List<Publication>
+    fun fetchPublications(): List<Publication>
+
+    @Query("SELECT * FROM publications WHERE isFavorite == 1")
+    fun fetchFavoritePublications(): List<Publication>
+
+    @Update
+    fun updateChangeFavoriteState(data: Publication)
 }
+
+//    @Insert - Post - Добавление
+//    @Update - Put - Изменение
+//    @Query - Произвольный запрос
+//    @Delete - Delete - Удаление

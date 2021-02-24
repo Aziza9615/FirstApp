@@ -54,7 +54,16 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Requ
     }
 
     override fun <T>onSuccess(result: T) {
-        publicationArray = result as MutableList<Publication>
+        val items = result as MutableList<Publication>
+        items.forEach {
+            for (i in 0 until publicationArray.size) {
+                if (it.id == publicationArray[i].id) {
+                    it.isFavorite = publicationArray[i].isFavorite
+                    it.countOfFavorite += 1
+                }
+            }
+        }
+        publicationArray = items as MutableList<Publication>
         adapter.addItems(publicationArray)
     }
 
@@ -64,8 +73,9 @@ class   PublicationFragment : Fragment(), PublicationAdapter.ClickListener, Requ
                 it.isFavorite = !it.isFavorite
                 if (it.isFavorite) it.countOfFavorite += 1
                 else it.countOfFavorite -= 1
-                adapter.updateItem(position)
+                repository.updateChangeFavoriteState(it)
             }
+            adapter.updateItem(position)
         }
     }
 

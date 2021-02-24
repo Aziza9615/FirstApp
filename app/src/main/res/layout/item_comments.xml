@@ -39,14 +39,14 @@
 
     <ImageButton
         android:id="@+id/favorite_btn"
-        android:layout_width="14dp"
-        android:layout_height="14dp"
-        app:layout_constraintTop_toTopOf="@+id/count_of_favorite_tv"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="@dimen/margin_8_dp"
+        android:src="@drawable/ic_cat"
         app:layout_constraintBottom_toBottomOf="@+id/count_of_favorite_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_favorite"
-        android:layout_marginStart="@dimen/margin_8_dp"
-        android:layout_marginEnd="@dimen/margin_8_dp" />
+        app:layout_constraintTop_toTopOf="@+id/count_of_favorite_tv"
+        android:layout_marginRight="@dimen/margin_8_dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
